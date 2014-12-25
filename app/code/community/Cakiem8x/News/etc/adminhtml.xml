@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+/**
+ * News Magento admin config
+ * 
+ * @author: Van NH
+ */
+-->
+
+<config>
+    <menu>
+        <news translate="title" module="cakiem8x_news">
+            <title>News</title>
+            <sort_order>65</sort_order>
+            <children>
+                <first_child translate="title" modulle="cakiem8x_news">
+                    <title>Manage News</title>
+                    <action>adminhtml/news</action>
+                    <sort_order>50</sort_order>
+                </first_child>
+            </children>
+        </news>
+    </menu>
+    
+    <acl>
+        <resources>
+            <Admin>
+                <children>
+                    <news translate="title" module="cakiem8x_news">
+                        <title>News</title>
+                        <sort_order>65</sort_order>
+                        <children>
+                            <first_child translate="title">
+                                <title>Manage News</title>
+                                <sort_order>0</sort_order>
+                                <children>
+                                    <save translate="title">
+                                        <title>Save News</title>
+                                        <sort_order>0</sort_order>
+                                    </save>
+                                    <delete transalte="title">
+                                        <title>Delete News</title>
+                                        <sort_order>1</sort_order>
+                                    </delete>
+                                </children>
+                            </first_child>
+                        </children>
+                    </news>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <news translate="title" module="cakiem8x_news">
+                                        <title>News Management</title>
+                                    </news>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </Admin>
+        </resources>
+    </acl>
+</config>

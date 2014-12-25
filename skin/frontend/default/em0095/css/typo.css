@@ -1,0 +1,105 @@
+Typography
+		font:/*BEGIN:general_font*/12px/1.35 Helvetica, Open Sans, Arial, sans-serif/*END:general_font*/;
+		font:/*BEGIN:general_bold_font*/bold 12px/1.35 Helvetica, Open Sans, Arial, sans-serif/*END:general_bold_font*/;
+		font:/*BEGIN:h1_font*/bold 22px helvetica, Open Sans, arial,sans-serif/*END:h1_font*/; 
+		font:/*BEGIN:h2_font*/bold 20px helvetica, Open Sans, arial,sans-serif/*END:h2_font*/;
+		font:/*BEGIN:h3_font*/bold 18px helvetica, Open Sans, arial,sans-serif/*END:h3_font*/;
+		font:/*BEGIN:h4_font*/bold 16px helvetica, Open Sans, arial,sans-serif/*END:h4_font*/;
+		font:/*BEGIN:h5_font*/bold 14px helvetica, Open Sans, arial,sans-serif/*END:h5_font*/; 
+		font:/*BEGIN:h6_font*/bold 12px helvetica, Open Sans, arial,sans-serif/*END:h6_font*/; 
+	General :
+		box-shadow:/*BEGIN:box_shadow*/ -3px 5px 11px #e6e6e6 /*END:box_shadow*/ ;
+		-moz-box-shadow:/*BEGIN:box_shadow*/ -3px 5px 11px #e6e6e6 /*END:box_shadow*/ ;
+		-webkit-box-shadow: /*BEGIN:box_shadow*/ -3px 5px 11px #e6e6e6 /*END:box_shadow*/ ;
+		border-radius:/*BEGIN:rounded_corner*/0/*END:rounded_corner*/;
+		-webkit-border-radius:/*BEGIN:rounded_corner*/0/*END:rounded_corner*/;
+		-moz-border-radius:/*BEGIN:rounded_corner*/0/*END:rounded_corner*/;
+		
+	Header
+			- background-color :/*BEGIN:header_bgcolor*/#fff/*END:header_bgcolor*/
+			- background-color :/*BEGIN:header_bgcolor2*/#3478e3/*END:header_bgcolor2*/ 
+			- text color: color: /*BEGIN:header_text_color*/#191919/*END:header_text_color*/	
+			- text color 2: color: /*BEGIN:header_text2_color*/#969696/*END:header_text2_color*/	
+			- text color 3: color: /*BEGIN:header_text3_color*/#d00000/*END:header_text3_color*/	
+			- text color 4: color: /*BEGIN:header_text4_color*/#0a4b9b/*END:header_text4_color*/	
+			- text color 5: color: /*BEGIN:header_text5_color*/#fff/*END:header_text5_color*/	
+			- background-image: /*BEGIN:header_bgimage*/none/*END:header_bgimage*/	
+			- background-position:/*BEGIN:header_bgposition*/0 0/*END:header_bgposition*/
+			- background-repeat:/*BEGIN:header_bgrepeat*/repeat/*END:header_bgrepeat*/
+			- border:1px solid /*BEGIN:header_line*/#cc0000/*END:header_line*/
+			- border:1px solid /*BEGIN:header2_line*/#3478e3/*END:header2_line*/ 
+			- border:1px solid /*BEGIN:header3_line*/#e6e6e6/*END:header3_line*/
+	Menu
+		- Top Menu 
+			+ Background Color : background-color: /*BEGIN:menu_top_bgcolor*/#9a9ab3/*END:menu_top_bgcolor*/	
+			+ Background Color Hover: background-color: /*BEGIN:menu_top_hover_bgcolor*/#9a9ab3/*END:menu_top_hover_bgcolor*/
+			+ Text Color : color: /*BEGIN:menu_top_text_color*/#fff/*END:menu_top_text_color*/
+			+ Hover/Active Text Color: color: /*BEGIN:menu_active_text_color*/#fff/*END:menu_active_text_color*/
+			- border: 1px solid /*BEGIN:menu_line*/#d50000/*END:menu_line*/
+		
+		- Dropdown Menu
+			+ Background Color:  background-color: /*BEGIN:menu_drop_bgcolor*/#fff/*END:menu_drop_bgcolor*/
+			+ Background Color Hover:  background-color: /*BEGIN:menu_drop_hover_bgcolor*/#fff/*END:menu_drop_hover_bgcolor*/
+			+ Text Color: color: /*BEGIN:menu_drop_text_color*/#191919/*END:menu_drop_text_color*/
+			+ Text Color 2: color:/*BEGIN:menu_drop_text2_color*/#969696/*END:menu_drop_text2_color*/
+			+ Text Color 3: color:/*BEGIN:menu_drop_text3_color*/#cc0000/*END:menu_drop_text3_color*/
+			+ Text Color 4: color:/*BEGIN:menu_drop_text4_color*/#0a4b9b/*END:menu_drop_text4_color*/
+			+ border:1px solid /*BEGIN:menu_drop_line*/#e6e6e6/*END:menu_drop_line*/
+		
+	Body
+		- Background Color 1: /*BEGIN:body_bgcolor1*/#fff/*END:body_bgcolor1*/ 
+		- Background Color 2: /*BEGIN:body_bgcolor2*/#2f3742/*END:body_bgcolor2*/ //xam
+		- background-position:/*BEGIN:body_bgposition*/0 0/*END:body_bgposition*/
+		- background-repeat:/*BEGIN:body_bgrepeat*/no-repeat/*END:body_bgrepeat*/
+		- Background Image: /*BEGIN:body_bgimage*/none/*END:body_bgimage*/
+
+		- Text Color 1: /*BEGIN:body_text_color1*/#0a4b9b/*END:body_text_color1*/ //xam dam
+		- Text Color 2: /*BEGIN:body_text_color2*/#cc0000/*END:body_text_color2*/ //xanh
+		- Text Color 3: /*BEGIN:body_text_color3*/#191919/*END:body_text_color3*/ //xam nhat
+		- Text Color 4: /*BEGIN:body_text_color4*/#fff/*END:body_text_color4*/ //do
+		- Text Color 5: /*BEGIN:body_text_color5*/#646464/*END:body_text_color5*/ //cam
+		- Text Color 6: /*BEGIN:body_text_color6*/#ff9a00/*END:body_text_color6*/ 
+		- Text Color 7: /*BEGIN:body_text_color7*/#9bc411/*END:body_text_color7*/ 
+		- Text Color 8: /*BEGIN:body_text_color8*/#30c2c2/*END:body_text_color8*/ 
+		- Text Color 9: /*BEGIN:body_text_color9*/#1876ea/*END:body_text_color9*/ 
+		- Text Color 10: /*BEGIN:body_text_color10*/#c153df/*END:body_text_color10*/ 
+		- Line 1 : /*BEGIN:body_line1*/#000/*END:body_line1*/
+		- Line 2 : /*BEGIN:body_line2*/#e6e6e6/*END:body_line2*/
+		- Line 3 : /*BEGIN:body_line3*/#ff2e2e/*END:body_line3*/
+		- Line 4 : /*BEGIN:body_line4*/#315c99/*END:body_line4*/
+
+	Footer
+		- Text Color 1:/*BEGIN:footer_text_color1*/#191919/*END:footer_text_color1*/ 
+		- Text Color 2:/*BEGIN:footer_text_color2*/#646464/*END:footer_text_color2*/ 
+		- Text Color 3:/*BEGIN:footer_text_color3*/#969696/*END:footer_text_color3*/ 
+		- Line 1 : /*BEGIN:footer_line1*/#d1d1d1/*END:footer_line1*/
+		- Line 2 : /*BEGIN:footer_line2*/#e6e6e6/*END:footer_line2*/
+		- Background image : /*BEGIN:footer_bgimage*/none/*END:footer_bgimage*/
+		- Background Color:/*BEGIN:footer_bgcolor*/#fff/*END:footer_bgcolor*/
+		- background-position:/*BEGIN:footer_bgposition*/0 0/*END:footer_bgposition*/
+		- background-repeat:/*BEGIN:footer_bgrepeat*/no-repeat/*END:footer_bgrepeat*/
+	
+	Button
+		- Button 1
+			+ background color: /*BEGIN:button1_bgcolor*/#cf0301/*END:button1_bgcolor*/
+			+ line: /*BEGIN:button1_line*/#ec0000/*END:button1_line*/
+			+ color: /*BEGIN:button1_color*/#ffffff/*END:button1_color*/		
+		- Button 2
+			+ background color: /*BEGIN:button2_bgcolor*/#377be9/*END:button2_bgcolor*/
+			+ line: /*BEGIN:button2_line*/#2f5bb7/*END:button2_line*/
+			+ color: /*BEGIN:button2_color*/#fff/*END:button2_color*/
+		- Button 3
+			+ background color: /*BEGIN:button3_bgcolor*/#ff1563/*END:button3_bgcolor*/		
+			+ background color: /*BEGIN:button3_line*/#df0049/*END:button3_line*/		
+			+ color: /*BEGIN:button3_color*/#fff/*END:button3_color*/
+	
+border-radius:0; -webkit-border-radius:0; -moz-border-radius:0 ; 
+box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;-o-box-sizing:border-box;
+-moz-transition: all 300ms ease; -webkit-transition: all 300ms ease; -o-transition: all 300ms ease; transition: all 300ms ease;	
+filter:alpha(opacity=80); -moz-opacity:0.8; -khtml-opacity:0.8; opacity:0.8; -ms-filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+
+/* input transition */
+-webkit-transition:border linear 300ms, box-shadow linear 300ms;
+-moz-transition:border linear 300ms, box-shadow linear 300ms;
+-o-transition:border linear 300ms, box-shadow linear 300ms;
+transition:border linear 300ms, box-shadow linear 300ms;

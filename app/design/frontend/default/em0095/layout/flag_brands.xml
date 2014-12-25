@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<layout version="0.1.0">
+
+    <flag_brands_brand_view>
+        <update handle="catalog_category_layered"/>
+        <reference name="left">
+            <!--<remove name="catalog.leftnav"/>-->
+            <!--<block type="flag_brands/catalog_layer_view" name="catalog.leftnav" template="catalog/layer/view.phtml" after="currency" />-->
+            <remove name="catalog.compare.sidebar"/>
+        </reference>
+
+    </flag_brands_brand_view>
+
+</layout>

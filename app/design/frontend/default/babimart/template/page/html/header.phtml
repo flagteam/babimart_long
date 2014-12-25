@@ -1,0 +1,106 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+/**
+ * @var Mage_Page_Block_Html_Header $this
+ */
+?>
+
+
+<div id="header">
+
+    <div class="hr-right">
+        <div class="hr-menu">
+            <ul>
+                <li class="city_name">
+                    <a><img src="<?php echo $this->getSkinUrl('images/place-icon.png'); ?>"> Hà nội <img class="arrow_down" src="<?php echo $this->getSkinUrl('images/sx.png'); ?>"></a>
+                    <ul>
+                        <li><a href="#">Hồ chí Minh</a></li>
+                        <li><a href="#">Đà Nẵng</a></li>
+                    </ul>
+                </li><!--.city_name-->
+
+                <li class="support">
+                    <a><span class="crl-pink">Hỗ trợ:</span> 0977.688.812 <img class="arrow_down" src="<?php echo $this->getSkinUrl('images/sx.png'); ?>"></a>
+                    <ul>
+                        <p>Hỗ trợ: 023456. 7899</p>
+                        <p>Hỗ trợ từ t2-t7 hàn ngày </p>
+                    </ul>
+                </li><!-- .support-->
+                <li><a href="#">Kiến thức</a></li><li class="br-right">|</li>
+                <li><a href="#">Giao lưu</a></li><li class="br-right">|</li>
+                <li ><a href="#">Thêm <img class="arrow_down" src="<?php echo $this->getSkinUrl('images/sx.png'); ?>"></a>
+                    <ul>
+                        <li><a href="#">Thêm</a></li>
+                    </ul>
+                </li><!---->
+            </ul>
+        </div><!--.hr-menu-->
+        <div class="clear"></div>
+        <div class="commit">
+            <div class="box-cmt">
+                <img src="<?php echo $this->getSkinUrl('images/dv.png'); ?>" alt="">
+                <p class="text-tf">Dịch vụ tại nhà</p>
+                <p>Miễn phí 7 ngày đầu</p>
+            </div><!--.box-cmt-->
+            <div class="box-cmt">
+                <img src="<?php echo $this->getSkinUrl('images/car.png'); ?>" alt="">
+                <p  class="text-tf">Giao hàng miễn phí</p>
+                <p>Nhanh chóng - Đúng hẹn</p>
+            </div><!--.box-cmt-->
+            <div class="box-cmt">
+                <img src="<?php echo $this->getSkinUrl('images/money.png'); ?>" alt="">
+                <p  class="text-tf">Thanh toán nhanh</p>
+                <p>An toàn - Bảo mật</p>
+            </div><!--.box-cmt-->
+            <div class="box-cmt">
+                <img src="<?php echo $this->getSkinUrl('images/back.png'); ?>" alt="">
+                <p class="text-tf">07 ngày đổi hàng</p>
+                <p>Miễn phí đổi hàng</p>
+            </div><!--.box-cmt-->
+        </div><!-- .commit-->
+    </div><!--hr-right-->
+
+    <img class="logo" src="<?php echo $this->getSkinUrl('images/logo.png');?>" alt="babimart">
+</div><!-- #header-->
+<div class="clear"></div>
+<!---->
+<!--<div class="header-container">-->
+<!--    <div class="header">-->
+<!--        --><?php //if ($this->getIsHomePage()):?>
+<!--        <h1 class="logo"><strong>--><?php //echo $this->getLogoAlt() ?><!--</strong><a href="--><?php //echo $this->getUrl('') ?><!--" title="--><?php //echo $this->getLogoAlt() ?><!--" class="logo"><img src="--><?php //echo $this->getLogoSrc() ?><!--" alt="--><?php //echo $this->getLogoAlt() ?><!--" /></a></h1>-->
+<!--        --><?php //else:?>
+<!--        <a href="--><?php //echo $this->getUrl('') ?><!--" title="--><?php //echo $this->getLogoAlt() ?><!--" class="logo"><strong>--><?php //echo $this->getLogoAlt() ?><!--</strong><img src="--><?php //echo $this->getLogoSrc() ?><!--" alt="--><?php //echo $this->getLogoAlt() ?><!--" /></a>-->
+<!--        --><?php //endif?>
+<!--        <div class="quick-access">-->
+<!--            --><?php //echo $this->getChildHtml('topSearch') ?>
+<!--            <p class="welcome-msg">--><?php //echo $this->getWelcome() ?><!-- --><?php //echo $this->getAdditionalHtml() ?><!--</p>-->
+<!--            --><?php //echo $this->getChildHtml('topLinks') ?>
+<!--            --><?php //echo $this->getChildHtml('store_language') ?>
+<!--        </div>-->
+<!--        --><?php //echo $this->getChildHtml('topContainer'); ?>
+<!--    </div>-->
+<!--</div>-->
+<?php echo $this->getChildHtml('topMenu') ?>

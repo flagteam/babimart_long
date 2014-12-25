@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<config>
+    <modules>
+        <Cakiem8x_AdminRest>
+            <version>0.1.0</version>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Cakiem8x_AdminRest>
+    </modules>
+</config>

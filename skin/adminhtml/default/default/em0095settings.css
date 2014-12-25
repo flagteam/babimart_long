@@ -1,0 +1,24 @@
+/**
+ * EMThemes
+ *
+ * @license commercial software
+ * @copyright (c) 2012 Codespot Software JSC - EMThemes.com. (http://www.emthemes.com)
+ */
+
+.em0095_general_page_bgimage img, .em0095_typography_header_bgimage img, .em0095_typography_body_bgimage img, .em0095_typography_footer_bgimage img { width:30px; height:30px; border:2px solid #ffffff }
+.em0095_general_page_bgimage:hover img,.em0095_general_page_bgimage.selected img,
+.em0095_typography_header_bgimage:hover img,.em0095_typography_header_bgimage.selected img,
+.em0095_typography_body_bgimage:hover img,.em0095_typography_body_bgimage.selected img,
+.em0095_typography_footer_bgimage:hover img,.em0095_typography_footer_bgimage.selected img { border:2px solid #000000 }
+
+.color_pattern { display:inline-block; width:10px; height:10px; vertical-align:text-bottom; border:1px solid #333; }
+
+#row_em0095_typography_general label, 
+#row_em0095_typography_header label, 
+#row_em0095_typography_menu label, 
+#row_em0095_typography_body label, 
+#row_em0095_typography_footer label, 
+#row_em0095_typography_button label, 
+#row_em0095_typography_button1 label, 
+#row_em0095_typography_button2 label,
+#row_em0095_typography_button3 label {color:#eb5e00; font-size:20px; font-weight:bold; margin-bottom:10px; margin-top:10px;}

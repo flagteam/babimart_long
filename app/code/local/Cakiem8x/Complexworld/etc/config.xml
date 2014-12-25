@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+    <modules>
+        <Cakiem8x_Complexworld>
+            <version>0.1.0</version>
+        </Cakiem8x_Complexworld>
+    </modules>
+    
+    <frontend>
+        <routers>
+            <complexworld>
+                <use>standard</use>
+                <args>  
+                    <module>Cakiem8x_Complexworld</module>
+                    <frontName>complexworld</frontName>
+                </args>                
+            </complexworld>
+        </routers>
+    </frontend>
+    
+    <global>
+        <models>
+            <complexworld>
+                <class>Cakiem8x_Complexworld_Model</class>
+                <resourceModel>complexworld_resource</resourceModel>
+            </complexworld>
+
+            <complexworld_resource>
+                <class>Cakiem8x_Complexworld_Model_Resource</class>
+                <entities>
+                    <eavblogpost>
+                        <table>eavblogpost_posts</table>
+                    </eavblogpost>
+                    <blogpost_entity_varchar>
+                        <table>eavblogpost_posts_varchar</table>
+                    </blogpost_entity_varchar>
+                    <blogpost_entity_int>
+                        <table>eavblogpost_posts_int</table>
+                    </blogpost_entity_int>
+                    <blogpost_entity_text>
+                        <table>eavblogpost_posts_text</table>
+                    </blogpost_entity_text>
+                </entities>
+            </complexworld_resource>
+        </models>
+        
+        <resources>
+            <complexworld_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </complexworld_write>
+            <complexworld_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </complexworld_read>
+            
+            <complexworld_setup>
+                <setup>
+                    <module>Cakiem8x_Complexworld</module>
+                    <class>Cakiem8x_Complexworld_Model_Entity_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </complexworld_setup>
+        </resources>        
+    </global>
+</config>

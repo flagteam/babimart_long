@@ -1,0 +1,58 @@
+<?php
+
+/**
+ * Install module Mto
+ * Add 2 attribute:
+ *  Quote Type
+ *  Order Type
+ */
+
+$read = Mage::getSingleton('core/resource')
+        ->getConnection('core_read');
+
+$eid = $read->fetchRow('SELECT entity_type_id FROM eav_entity_type WHERE entity_type_code = "quote_item"');
+$eid2 = $read->fetchRow('SELECT entity_type_id FROM eav_entity_type WHERE entity_type_code = "order_item"');
+
+
+
+$installer = $this;
+$installer->startSetup();
+
+$quote_type_id = $eid['entity_type_id'];
+$quote = array(
+    'entity_type_id' => $quote_type_id
+    , 'attribute_code' => 'mto_length'
+    , 'backend_type' => 'varchar'
+    , 'frontend_input' => 'text'
+    , 'is_global' => '1'
+    , 'is_visible' => '0'
+    , 'is_required' => '0'
+    , 'is_user_defined' => '1'
+);
+
+
+
+$attribute = new Mage_Eav_Model_Entity_Attribute();
+$attribute->loadByCode($quote['entity_type_id'], $quote['attribute_code'])
+        ->setStoreId(0)
+        ->addData($quote);
+$attribute->save();
+
+
+$order_type_id = $eid2['entity_type_id'];
+$order = array(
+    'entity_type_id' => $order_type_id
+    , 'attribute_code' => 'mto_length'
+    , 'backend_type' => 'varchar'
+    , 'frontend_input' => 'text'
+    , 'is_global' => '1'
+    , 'is_visible' => '0'
+    , 'is_required' => '0'
+    , 'is_user_defined' => '1'
+);
+$attribute->loadByCode($order['entity_type_id'], $order['attribute_code'])
+        ->setStoreId(0)
+        ->addData($order);
+$attribute->save();
+
+$installer->endSetup();

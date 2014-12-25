@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+    <modules>
+        <Cakiem8x_HelloWorld>
+            <version>0.1.0</version>
+        </Cakiem8x_HelloWorld>        
+    </modules>
+    
+    <frontend>
+        <routers>
+            <helloworld>
+                <use>standard</use>
+                <args>
+                    <module>Cakiem8x_HelloWorld</module>
+                    <frontName>helloworld</frontName>
+                </args>
+            </helloworld>
+        </routers>
+    </frontend>
+</config>

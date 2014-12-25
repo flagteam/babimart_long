@@ -1,0 +1,95 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Top menu for store
+ *
+ * @see Mage_Page_Block_Html_Topmenu
+ */
+?>
+
+<div class="menu" id="menu">
+    <?php $_helper = Mage::helper('catalog/category') ?>
+    <?php $_categories = $_helper->getStoreCategories() ?>
+    <?php $currentCategory = Mage::registry('current_category') ?>
+    <?php if (count($_categories) > 0): ?>
+        <ul class="ls menu-hori ">
+            <li class="menu-pc">
+                <a class="menu-pc-title" href="" title="Danh mục sản phẩm">
+                <img src="<?php echo $this->getSkinUrl('images/bgmenu.png'); ?>"> Danh mục sản phẩm</a>
+                <ul class="menu-verti ls">
+                <?php foreach($_categories as $_category): ?>
+
+                    <li class="menu-verti-i menu-verti-i-0">
+                        <a href="<?php echo $_helper->getCategoryUrl($_category) ?>" class="a-menu-verti-0">
+                            <?php echo $_category->getName() ?>
+                        </a>
+                        <?php $_category = Mage::getModel('catalog/category')->load($_category->getId()) ?>
+                        <?php $_subcategories = $_category->getChildrenCategories() ?>
+                        <?php if (count($_subcategories) > 0): ?>
+                            <ul class="ls menu-hori-1">
+                                <?php foreach($_subcategories as $_subcategory): ?>
+                                    <li class="menu-verti-i menu-verti-i-1">
+                                        <a href="<?php echo $_helper->getCategoryUrl($_subcategory) ?>" class="a-menu-verti-1">
+                                            <?php echo $_subcategory->getName() ?>
+                                        </a>
+                                    </li>
+                                <?php endforeach; ?>
+                            </ul>
+                        <?php endif; ?>
+                    </li>
+
+                <?php endforeach; ?>
+                </ul>
+            </li>
+
+            <li>
+                <form action="" method="post">
+                    <select name="">
+                        <option>Danh mục</option>
+                        <option>Dồ chờ trẻ con</option>
+                    </select>
+                    <input class="input" name="" type="text" placeholder="Nhập từ khoá...">
+                    <input class="botton" name="" type="button"  value="SEARCH">
+                </form>
+            </li>
+        </ul>
+    <?php endif; ?>
+
+    <div class="r-float">
+        <ul>
+            <li><strong> Xin chào!</strong></br><a href="">Đăng nhập</a></li>
+            <li><img src="<?php echo $this->getSkinUrl('images/shoping-icon.png'); ?>"><strong> <a href="">GIỎ HÀNG</a></strong></br> 0 item
+                <ul>
+                    <li> <a href="#">Mua hàng</a></li>
+                    <li> <a href="#">Mua hàng</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+

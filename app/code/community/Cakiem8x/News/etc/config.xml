@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+    <modules>
+        <Cakiem8x_News>
+            <version>0.1.0</version>
+        </Cakiem8x_News>
+    </modules>
+    
+    <global>
+        <models>
+            <cakiem8x_news>
+                <class>Cakiem8x_News_Model</class>
+                <resourceModel>news_resource</resourceModel>                
+            </cakiem8x_news>
+            <news_resource>
+                <class>Cakiem8x_News_Model_Resource</class>
+                <entities>
+                    <news>
+                        <table>cakiem8x_news</table>
+                    </news>                    
+                </entities>
+            </news_resource>
+        </models>
+        
+        <helpers>
+            <cakiem8x_news>
+                <class>Cakiem8x_News_Helper</class>
+            </cakiem8x_news>
+        </helpers>
+        
+        <blocks>
+            <cakiem8x_news>
+                <class>Cakiem8x_News_Block</class>
+            </cakiem8x_news>
+        </blocks>
+        
+        <resources>
+            <cakiem8x_news_setup>
+                <setup>
+                    <module>Cakiem8x_News</module>
+                    <class>Cakiem8x_News_Model_Resource_Setup</class>
+                </setup>
+            </cakiem8x_news_setup>
+        </resources>
+        
+        <events>
+            <before_news_item_display>
+                <observers>
+                    <class>cakiem8x_news/observer</class>
+                    <method>beforeNewsDisplayed</method>
+                </observers>
+            </before_news_item_display>
+        </events>
+    </global>
+    
+    <frontend>
+        <routers>
+            <cakiem8x_news>
+                <use>standard</use>
+                <args>
+                    <module>Cakiem8x_News</module>
+                    <frontName>news</frontName>
+                </args>
+            </cakiem8x_news>
+        </routers>
+        
+        <layout>
+            <updates>
+                <cakiem8x_news>
+                    <file>cakiem8x_news.xml</file>
+                </cakiem8x_news>
+            </updates>
+        </layout>
+    </frontend>
+    
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Cakiem8x_News before="Mage_Adminhtml">Cakiem8x_News_Adminhtml</Cakiem8x_News>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    
+    <adminhtml>
+        <layout>
+            <updates>
+                <cakiem8x_news>
+                    <file>cakiem8x_news.xml</file>
+                </cakiem8x_news>
+            </updates>
+        </layout>
+    </adminhtml>
+    
+    <default>
+        <news>
+            <view>
+                <enable>1</enable>
+                <item_per_page>20</item_per_page>
+                <days_difference>3</days_difference>
+            </view>
+        </news>
+    </default>
+</config>

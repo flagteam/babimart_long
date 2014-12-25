@@ -1,0 +1,151 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+
+
+<div class="main-box slider">
+    <div class="sub-menu">
+
+    </div> <!-- .sub-menu-->
+    <div class="sliderimg col-2 " id="slides">
+        <div class="slides_container">
+            <div class="slide">
+                <img src="<?php echo $this->getSkinUrl('images/hot.png');?>"  alt=""/>
+            </div>
+            <div class="slide">
+                <img src="<?php echo $this->getSkinUrl('images/baby.png');?>">
+            </div>
+            <div class="slide">
+                <img src="<?php echo $this->getSkinUrl('images/pd5.png');?>"  alt=""/>
+            </div>
+        </div>
+        <a href="#" class="prev"><img src="<?php echo $this->getSkinUrl('images/left.png');?>" alt=""></a>
+        <a href="#" class="next"><img src="<?php echo $this->getSkinUrl('images/right.png');?>"  alt=""></a>
+    </div><!--.sliderimg-->
+
+    <div class="col-3">
+        <div class="combo" id="combo">
+            <div class="slides_container">
+                <div class="slide">
+                    <img src="<?php echo $this->getSkinUrl('images/hot.png');?>"  alt=""/>
+                </div>
+                <div class="slide">
+                    <img src="<?php echo $this->getSkinUrl('images/baby.png');?>">
+                </div>
+                <div class="slide">
+                    <img src="<?php echo $this->getSkinUrl('images/pd5.png');?>"  alt=""/>
+                </div>
+            </div>
+            <div class="cb-text"><img src="<?php echo $this->getSkinUrl('images/combo.png');?>" alt=""></div>
+        </div><!-- .combo-->
+        <div class="hotdeal" id="hotdeal">
+            <div class="slides_container">
+                <div class="slide">
+                    <img src="<?php echo $this->getSkinUrl('images/hot.png');?>"  alt=""/>
+                </div>
+                <div class="slide">
+                    <img src="<?php echo $this->getSkinUrl('images/baby.png');?>">
+                </div>
+                <div class="slide">
+                    <img src="<?php echo $this->getSkinUrl('images/pd5.png');?>"  alt=""/>
+                </div>
+            </div>
+            <div class="hd-text"><img src="<?php echo $this->getSkinUrl('images/hotdeal.png');?>" alt=""></div>
+        </div><!-- hotdeal-->
+    </div>
+
+    <div class="col-3">
+        <div class="ads1">
+            <img src="<?php echo $this->getSkinUrl('images/ads.png');?>">
+        </div><!-- .ads1-->
+        <div class="ads2"><img src="<?php echo $this->getSkinUrl('images/ads1.png');?>"></div><!-- ads2-->
+    </div>
+
+</div><!-- .slider-->
+
+
+<div class="main-box">
+    <div class="box-cat">
+        <div class="cat-left"> Sản phẩm nhiều người quan tâm</div>
+        <div class="cat-right"> Video clip</div>
+    </div><!-- .box-cat-->
+    <div class="clear"></div>
+
+    <div class="lbox" >
+        <div id="slider1">
+            <a class="buttons prev" href="#"><img src="<?php echo $this->getSkinUrl('images/left.png');?>"></a>
+            <div class="viewport">
+                <?php echo $this->getLayout()->createBlock('catalog/product_mostviewed')->setTemplate('catalog/product/mostviewed.phtml')->toHtml(); ?>
+            </div>
+            <a class="buttons next" href="#"><img src="<?php echo $this->getSkinUrl('images/right.png');?>"></a>
+        </div>
+    </div><!-- lbox-->
+    <div class="rbox video">
+        <iframe width="560" height="315" src="//www.youtube.com/embed/4PTOiz_dOLs" frameborder="0" allowfullscreen></iframe>
+    </div><!-- .rbox-->
+
+</div><!-- .main-box-->
+
+
+<div class="main-box">
+    <div class="box-cat">
+        <div class="cat-left"> Sản phẩm khuyến mại</div>
+        <div class="cat-right"> Nhận xét</div>
+    </div><!-- .box-cat-->
+    <div class="clear"></div>
+    <div class="lbox">
+        <?php //echo $this->getLayout()->createBlock('catalog/product_promotion')->setTemplate('catalog/product/promotion.phtml')->toHtml(); ?>
+    </div><!-- lbox-->
+
+    <div class="rbox comment">
+        <p><a href="#">@gia Huy: Lần đầu mua hàng tai babi, nhưng theo đánh giá</a></p>
+        <p><a href="#">@Huyên mtt: Sản phẩm rẻ phục vụ chu đáo</a></p>
+        <p><a href="#">@Bebo:ok</a></p>
+        <p><a href="#">@gia guy: Cũng tạm được</a></p>
+    </div><!-- .rbox-->
+
+</div><!-- .main-box-->
+
+
+<div class="main-box">
+    <div class="box-cat">
+        <div class="cat-left"> Có thể bạn quan tâm</div>
+        <div class="cat-right"> Babimart on facebook</div>
+    </div><!-- .box-cat-->
+    <div class="clear"></div>
+    <div class="lbox">
+        <?php
+            echo $this->getLayout()->createBlock('catalog/product_bestseller')->setTemplate('catalog/product/bestseller.phtml')->toHtml();
+        ?>
+    </div><!-- lbox-->
+
+    <div class="rbox facebook">
+        <iframe src="//www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2FFacebookDevelopers&amp;width&amp;height=290&amp;colorscheme=light&amp;show_faces=true&amp;header=true&amp;stream=false&amp;show_border=true" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:290px;" allowTransparency="true"></iframe>
+    </div><!-- .rbox-->
+
+</div><!-- .main-box-->
+
+

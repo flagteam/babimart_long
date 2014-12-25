@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+    <sections>
+        <general>
+            <groups>
+                <store_information>
+                    <fields>
+                        <cakiem8x_storeinfo translate="label">
+                            <label>Store info</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>                            
+                        </cakiem8x_storeinfo>
+                    </fields>
+                </store_information>
+            </groups>
+        </general>
+    </sections>
+</config>

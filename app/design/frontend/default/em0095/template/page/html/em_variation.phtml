@@ -1,0 +1,669 @@
+<?php
+    /* get config from themesetting */
+
+$setting = Mage::helper('em0095settings');
+$fonts = Mage::getModel('em0095settings/config_font')->toOptionArray();
+$boxwide = Mage::getModel('em0095settings/config_boxwide')->toOptionArray();
+?>
+
+<a href="javascript:void(0)" class="btn-toggle">+ open/close</a>
+<div id="demotool_variation" class="hide-lte0">
+	
+	<div class="variation-cp" style="display:none">
+		<div class="demotool-title">Magento Theme Variations</div>
+		<form method="GET" name="emvariationform" id="emvariationform" action="<?php echo $this->getSkinUrl('css/theme.css.php') ?>">
+		<div class="demotool-content">
+            <!-- Google Fonts -->
+			<div class="demo demo-02">
+				<div class="content-title"><span>Google Fonts</span></div>
+				<div class="wrapper-content general-setting">
+					<div class="box last">
+						<div class="content">
+							<div class="col">
+								<div class="row">
+									<div class="label">Import these google fonts</div>
+									<div class="input">
+										<select id="em_variation_google_font" multiple="multiple" rows="10" size="10">
+											<?php $selectedFonts = explode(',', $setting->getTypography_GoogleFonts()) ?>
+											<?php foreach ($fonts as $_font): ?>
+											<option value="<?php echo htmlspecialchars($_font['value']) ?>" <?php echo @in_array($_font['value'], $selectedFonts) ? 'selected="selected"' : '' ?>><?php echo $_font['label'] ?></option>
+											<?php endforeach ?>
+										</select>
+									</div>
+									<div class="desc">Select which google fonts should be imported to your site</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>					
+			</div>
+			
+			<!-- Element Fonts -->
+			<div class="demo demo-03">
+				<div class="content-title"><span>Element Fonts</span></div>
+								
+				<div class="wrapper-content">
+					<div class="box last">
+						<div class="content">
+							<div class="col">
+								<div class="row">
+									<div class="label">General Font</div>
+									<div class="input"><input type="text" name="general_font" value="<?php echo htmlspecialchars($setting->getTypography_GeneralFont()) ?>" class="input-text"/></div>
+									<div class="desc">Font for body, content, text...<br/>E.g. <em> 13px/1.4 "Helvetica Neue", "Open Sans", Arial, sans-serif;</em></div>
+								</div>
+								
+								<div class="row">
+									<div class="label">Box Shadow</div>
+									<div class="input"><input type="text" name="box_shadow" value="<?php echo htmlspecialchars($setting->getTypography_BoxShadow()) ?>" class="input-text"/></div>
+									<div class="desc">Configure box shadow for box, widgets, slider. No box shadow by default.<br/>Default: #e6e6e6</div>
+								</div>
+																
+								<div class="row">
+									<div class="label">Rounded Corner</div>
+									<div class="input"><input type="text" name="rounded_corner" value="<?php echo htmlspecialchars($setting->getTypography_RoundedCorner()) ?>" class="input-text"/></div>
+									<div class="desc">Configure rounded corner for box, widgets, slider.<br/>Default: 0</div>
+								</div>
+
+								<div class="row">
+									<div class="label">H1</div>
+									<div class="input"><input type="text" name="h1_font" value="<?php echo htmlspecialchars($setting->getTypography_H1Font()) ?>" class="input-text" /></div>
+									<div class="desc">E.g. <em>600 22px "Helvetica Neue", "Open Sans", arial,sans-serif;</em></div>
+								</div>
+
+								<div class="row">
+									<div class="label">H2</div>
+									<div class="input"><input type="text" name="h2_font" value="<?php echo htmlspecialchars($setting->getTypography_H2Font()) ?>" class="input-text" /></div>
+									<div class="desc">E.g. <em>600 20px "Helvetica Neue", "Open Sans", arial,sans-serif;</em></div>
+								</div>
+
+								<div class="row">
+									<div class="label">H3</div>
+									<div class="input"><input type="text" name="h3_font" value="<?php echo htmlspecialchars($setting->getTypography_H3Font()) ?>" class="input-text" /></div>
+									<div class="desc">E.g. <em>600 18px "Helvetica Neue", "Open Sans", arial,sans-serif;</em></div>
+								</div>
+
+								<div class="row">
+									<div class="label">H4</div>
+									<div class="input"><input type="text" name="h4_font" value="<?php echo htmlspecialchars($setting->getTypography_H4Font()) ?>" class="input-text" /></div>
+									<div class="desc">E.g. <em>600 16px "Helvetica Neue", "Open Sans", arial,sans-serif;</em></div>
+								</div>
+
+								<div class="row">
+									<div class="label">H5</div>
+									<div class="input"><input type="text" name="h5_font" value="<?php echo htmlspecialchars($setting->getTypography_H5Font()) ?>" class="input-text" /></div>
+									<div class="desc">E.g. <em>600 14px "Helvetica Neue", "Open Sans", arial,sans-serif;</em></div>
+								</div>
+
+								<div class="row">
+									<div class="label">H6</div>
+									<div class="input"><input type="text" name="h6_font" value="<?php echo htmlspecialchars($setting->getTypography_H6Font()) ?>" class="input-text" /></div>
+									<div class="desc">E.g. <em>600 13px "Helvetica Neue", "Open Sans", arial,sans-serif;</em></div>
+								</div>
+								
+								<input type="hidden" name="additional_css_file" value="<?php echo htmlspecialchars($setting->getTypography_AdditionalCssFile()) ?>" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="demo demo-01">
+				<div class="content-title"><span>Choose Your Layout Style</span></div>
+				<div class="wrapper-content general-setting">
+					<div class="box last">
+						<div class="content">
+							<div class="col"> 
+								<div class="row">
+									<div class="label">Box/Wide Mode</div>
+									<div class="input">
+                                        <select id="em_box_wide" name="em_box_wide" class="em_box_wide select">
+                                            <?php $selectedBoxWide = explode(',', $setting->getGeneral_BoxWide()) ?>
+                                            <?php foreach ($boxwide as $boxwide_item): ?>
+											     <option value="<?php echo htmlspecialchars($boxwide_item['value']) ?>" <?php echo @in_array($boxwide_item['value'], $selectedBoxWide) ? 'selected="selected"' : '' ?>><?php echo $boxwide_item['label'] ?></option>
+											<?php endforeach ?>
+                                        </select>
+									</div>
+									<div class="desc">Default: Wide</div>
+								</div>
+                                <div id="option-mode">  
+									<div class="row">
+										<div class="label">Page Background Color</div>
+										<div class="input"><input type="text" name="page_bgcolor" value="<?php echo htmlspecialchars($setting->getTypography_PageBgcolor()) ?>" class="color-picker" /></div>
+										<div class="desc">Default background color used in background header<br/>Syntax: #number or rgba(...)<br/>Default: #000 <span class="color_pattern" style="background-color:#000"/></div>
+									</div>     
+
+	                                <div class="row">
+	                                    <div class="label">Page Background Position</div>
+	                                    <div class="input"><input type="text" name="page_bgposition" value="<?php echo htmlspecialchars($setting->getTypography_PageBgposition()) ?>" class="input-text" /></div>
+	                                    <div class="desc">Property Values: left top, left center, left bottom,right top, right center, right bottom,center top,center center,center bottom,x% y%, xpos ypos, inherit</div>
+	                                </div>
+
+									<div class="row">
+										<div class="label">Page Background Repeat</div>
+										<div class="input"><input type="text" name="page_bgrepeat" value="<?php echo htmlspecialchars($setting->getTypography_PageBgrepeat()) ?>" class="input-text" /></div>
+										<div class="desc">Property Values: repeat, repeat-x, repeat-y, no-repeat, inherit<br/>Default: repeat</div>
+									</div>
+									                       
+	                                <div class="row">
+										<div class="label">Page Background Pattern</div>
+										<div class="input">
+											<input type="hidden" name="page_bgimage" value="<?php echo htmlspecialchars($setting->getTypography_PageBgimage()) ?>"  />
+											<?php $imgDir = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN).'frontend/default/em0095/images/stripes/'; ?>
+											<?php foreach (Mage::getModel('em0095settings/config_stripes')->toOptionArray() as $row):?>
+											<a href="#" class="page_bgimage" data-input-value="<?php echo htmlspecialchars($row['value']) ?>" <?php echo $setting->getTypography_PageBgimage() == $row['value'] ? 'selected="selected"' : '' ?>>
+												<img src="<?php echo $imgDir . 'blank.gif' ?>" style="background-image:url(<?php echo $imgDir . $row['value'] ?>)" alt="" />
+											</a>
+											<?php endforeach ?>
+										</div>
+										<div class="desc">Specify background pattern image.</div>
+									</div>
+								</div>
+                            </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		
+			<!-- Header -->
+			<div class="demo demo-01">
+				<div class="content-title"><span>Header</span></div>
+				<div class="wrapper-content general-setting">
+					<div class="box last">
+						<div class="content">
+                            <div class="col col-1">
+                                <div class="row">
+									<div class="label">1st Header Background</div>
+									<div class="input"><input type="text" name="header_bgcolor1" value="<?php echo htmlspecialchars($setting->getTypography_HeaderBgcolor1()) ?>" class="color-picker" /></div>
+									<div class="desc">Default background color used in background header<br/>Syntax: #number or rgba(...)<br/>Default: #fff <span class="color_pattern" style="background-color:#fff"/></div>
+								</div>
+								<div class="row">
+									<div class="label">1st Header Line Color</div>
+									<div class="input"><input type="text" name="header_line1" value="<?php echo htmlspecialchars($setting->getTypography_HeaderLine1()) ?>" class="color-picker" /></div>
+									<div class="desc">Border of Dropdown Cart Content<br/>Default: #f3707d</div>
+								</div>
+                                <div class="row">
+                                    <div class="label">1st Header Text Color</div>
+                                    <div class="input"><input type="text" name="header_text_color1" value="<?php echo htmlspecialchars($setting->getTypography_HeaderTextColor1()) ?>" class="color-picker" /></div>
+                                    <div class="desc">Default color used in text link...<br/>Default: #191919</div>
+                                </div>
+                                <div class="row">
+                                    <div class="label">4th Header Text Color</div>
+                                    <div class="input"><input type="text" name="header_text_color4" value="<?php echo htmlspecialchars($setting->getTypography_HeaderTextColor4()) ?>" class="color-picker" /></div>
+                                    <div class="desc">Default used in languages and currency dropdown, ......<br/>Default: #0a4b9b</div>
+                                </div>
+                                <div class="row">
+                                    <div class="label">Header Background Position</div>
+                                    <div class="input"><input type="text" name="header_bgposition" value="<?php echo htmlspecialchars($setting->getTypography_HeaderBgposition()) ?>" class="input-text" /></div>
+                                    <div class="desc">Property Values: left top, left center, left bottom,right top, right center, right bottom,center top,center center,center bottom,x% y%, xpos ypos, inherit</div>
+                                </div>
+							</div>
+							<div class="col col-1">
+								<div class="row">
+									<div class="label">2nd Header Background</div>
+									<div class="input"><input type="text" name="header_bgcolor2" value="<?php echo htmlspecialchars($setting->getTypography_HeaderBgcolor2()) ?>" class="color-picker" /></div>
+									<div class="desc">Background of My account and My cart when hover<br/>Default: #519bfd</div>
+								</div>
+                                <div class="row">
+                                    <div class="label">2nd Header Line Color</div>
+                                    <div class="input"><input type="text" name="header_line2" value="<?php echo htmlspecialchars($setting->getTypography_HeaderLine2()) ?>" class="color-picker" /></div>
+                                    <div class="desc">Header Links Separate<br/>Default: #aaa</div>
+                                </div>
+                                <div class="row">
+                                    <div class="label">2nd Header Text Color</div>
+                                    <div class="input"><input type="text" name="header_text_color2" value="<?php echo htmlspecialchars($setting->getTypography_HeaderTextColor2()) ?>" class="color-picker" /></div>
+                                    <div class="desc">Default text color used in dropdown cart content...<br/>Default: #969696</div>
+                                </div>
+                                <div class="row">
+                                    <div class="label">5th Header Text Color</div>
+                                    <div class="input"><input type="text" name="header_text_color5" value="<?php echo htmlspecialchars($setting->getTypography_HeaderTextColor5()) ?>" class="color-picker" /></div>
+                                    <div class="desc">Default text color active dropdown title ......<br/>Default: #fff</div>
+                                </div>
+							</div>
+							<div class="col col-1">
+								<div class="row">
+									<div class="label">Header Box Shadow</div>
+									<div class="input"><input type="text" name="header_bxshadow" value="<?php echo htmlspecialchars($setting->getTypography_HeaderBxshadow()) ?>" class="color-picker" /></div>
+									<div class="desc">Box Shadow used in header<br/>Default: #e6e6e6</div>
+								</div>
+                                <div class="row">
+                                    <div class="label">3th Header Line Color</div>
+                                    <div class="input"><input type="text" name="header_line3" value="<?php echo htmlspecialchars($setting->getTypography_HeaderLine3()) ?>" class="color-picker" /></div>
+                                    <div class="desc">Line Between Two Products of Dropdown Shopping Cart<br/>Default: #e6e6e6</div>
+                                </div>
+                                <div class="row">
+                                    <div class="label">3th Header Text Color</div>
+                                    <div class="input"><input type="text" name="header_text_color3" value="<?php echo htmlspecialchars($setting->getTypography_HeaderTextColor3()) ?>" class="color-picker" /></div>
+                                    <div class="desc">Default text color of sign in and sign out links...<br/>Default: #d00000</div>
+                                </div>
+								<div class="row">
+									<div class="label">Header Background Repeat</div>
+									<div class="input"><input type="text" name="header_bgrepeat" value="<?php echo htmlspecialchars($setting->getTypography_HeaderBgrepeat()) ?>" class="input-text" /></div>
+									<div class="desc">Property Values: repeat, repeat-x, repeat-y, no-repeat, inherit<br/>Default: repeat</div>
+								</div>
+							</div>
+							<div class="col">                               
+                                 <div class="row">
+									<div class="label">Header Background Pattern</div>
+									<div class="input">
+										<input type="hidden" name="header_bgimage" value="<?php echo htmlspecialchars($setting->getTypography_HeaderBgimage()) ?>"  />
+										<?php $imgDir = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN).'frontend/default/em0095/images/stripes/'; ?>
+										<?php foreach (Mage::getModel('em0095settings/config_stripes')->toOptionArray() as $row):?>
+										<a href="#" class="header_bgimage" data-input-value="<?php echo htmlspecialchars($row['value']) ?>" <?php echo $setting->getTypography_HeaderBgimage() == $row['value'] ? 'selected="selected"' : '' ?>>
+											<img src="<?php echo $imgDir . 'blank.gif' ?>" style="background-image:url(<?php echo $imgDir . $row['value'] ?>)" alt="" />
+										</a>
+										<?php endforeach ?>
+									</div>
+									<div class="desc">Specify background pattern image.</div>
+								</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Top Menu -->
+			<div class="demo demo-01">
+				<div class="content-title"><span>Top Menu</span></div>
+				<div class="wrapper-content general-setting">
+					<div class="box last">
+						<div class="content">
+                            <div class="col col-2">
+                                <div class="row">
+									<div class="label">Top Menu Background Color</div>
+									<div class="input"><input type="text" name="menu_top_bgcolor" value="<?php echo htmlspecialchars($setting->getTypography_MenuTopBgcolor()) ?>" class="color-picker" /></div>
+									<div class="desc">Default background color used in top menu...<br/>Default: #cc0000</div>
+								</div>
+                                <div class="row">
+									<div class="label">Top Menu Hover/Active Background Color</div>
+									<div class="input"><input type="text" name="menu_top_hover_bgcolor" value="<?php echo htmlspecialchars($setting->getTypography_MenuTopHoverBgcolor()) ?>" class="color-picker" /></div>
+									<div class="desc">Default background of Top Menu when hover<br/>Default: #ea0000</div>
+								</div>
+                                <div class="row">
+									<div class="label">Top Menu Text Color</div>
+									<div class="input"><input type="text" name="menu_top_text_color" value="<?php echo htmlspecialchars($setting->getTypography_MenuTopTextColor()) ?>" class="color-picker" /></div>
+									<div class="desc">Default text color used in top menu and left menu title...<br/>Default: #fff</div>
+								</div>
+                                <div class="row">
+									<div class="label">Top Menu Text Hover/Active Color</div>
+									<div class="input"><input type="text" name="menu_active_text_color" value="<?php echo htmlspecialchars($setting->getTypography_MenuActiveTextColor()) ?>" class="color-picker" /></div>
+									<div class="desc">Text color used in Top Menu wher hover<br/>Default: #fff</div>
+								</div>
+								 <div class="row">
+									<div class="label">Menu Line</div>
+									<div class="input"><input type="text" name="menu_line" value="<?php echo htmlspecialchars($setting->getTypography_MenuLine()) ?>" class="color-picker"/></div>
+									<div class="desc">Separate line between two top menu items...<br/>Default: #fff</div>
+								</div>
+							</div>
+							<div class="col col-2">
+                                <div class="row">
+                                    <div class="label">Dropdown Menu Background Color</div>
+                                    <div class="input"><input type="text" name="menu_drop_bgcolor" value="<?php echo htmlspecialchars($setting->getTypography_MenuDropBgcolor()) ?>" class="color-picker"/></div>
+                                    <div class="desc">Default background color used in dropdown menu...<br/>Default: #fff</div>
+                                </div>
+                                <div class="row">
+									<div class="label">Dropdown Menu Hover/Active Background Color</div>
+									<div class="input"><input type="text" name="menu_drop_hover_bgcolor" value="<?php echo htmlspecialchars($setting->getTypography_MenuDropHoverBgcolor()) ?>" class="color-picker" /></div>
+									<div class="desc">Default background color used in left menu title and dropdown...<br/>Default: #fff</div>
+								</div>
+                                <div class="row">
+									<div class="label">Primary Dropdown Menu Text Color</div>
+									<div class="input"><input type="text" name="menu_drop_text_color1" value="<?php echo htmlspecialchars($setting->getTypography_MenuDropTextColor1()) ?>" class="color-picker" /></div>
+									<div class="desc">Default text color used in left menu content...<br/>Default: #191919</div>
+								</div>
+                                <div class="row">
+                                    <div class="label">Secondary Dropdown Menu Text Color</div>
+                                    <div class="input"><input type="text" name="menu_drop_text_color2" value="<?php echo htmlspecialchars($setting->getTypography_MenuDropTextColor2()) ?>" class="color-picker"/></div>
+                                    <div class="desc">Default text color used in dropdown menu...<br/>Default: #969696</div>
+                                </div>
+                                <div class="row">
+                                    <div class="label">Dropdown Menu Hover/Active Text Color</div>
+                                    <div class="input"><input type="text" name="menu_drop_text_color3" value="<?php echo htmlspecialchars($setting->getTypography_MenuDropTextColor3()) ?>" class="color-picker"/></div>
+                                    <div class="desc">Default text color used in hover Dropdown Menu...<br/>Default: #0a4b9b</div>
+                                </div>
+                                <div class="row">
+                                    <div class="label"> Menu Drop Line</div>
+                                    <div class="input"><input type="text" name="menu_drop_line" value="<?php echo htmlspecialchars($setting->getTypography_MenuDropLine1()) ?>" class="color-picker"/></div>
+                                    <div class="desc">Default line color used in dropdown menu...<br/>Default: #e6e6e6</div>
+                                </div>
+							</div>  
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Body -->
+			<div class="demo demo-01">
+				<div class="content-title"><span>Body</span></div>
+				<div class="wrapper-content general-setting">
+					<div class="box last">
+						<div class="content">
+                            <div class="col col-1">
+
+                                <div class="row">
+									<div class="label">1st Background</div>
+									<div class="input"><input type="text" name="body_bgcolor1" value="<?php echo htmlspecialchars($setting->getTypography_BodyBgcolor1()) ?>" class="color-picker" /></div>
+									<div class="desc">Default background color 1st used in body<br/>Default: #fff</div>
+								</div>	
+
+								<div class="row">
+									<div class="label">2nd Body Line Color</div>
+									<div class="input"><input type="text" name="body_line2" value="<?php echo htmlspecialchars($setting->getTypography_BodyLine2()) ?>" class="color-picker"/></div>
+									<div class="desc">Used in input and data table line color, ...<br/>Default: #dcdcdc</div>
+								</div>
+
+								<div class="row">
+									<div class="label">1st Body Text Color</div>
+									<div class="input"><input type="text" name="body_text_color1" value="<?php echo htmlspecialchars($setting->getTypography_BodyTextColor1()) ?>" class="color-picker"/></div>
+									<div class="desc">Used in tab title home, heading, product name, ...<br/>Default: #0a4b9b</div>
+								</div>
+
+								<div class="row">
+									<div class="label">4th Body Text &nbsp; Color</div>
+									<div class="input"><input type="text" name="body_text_color4" value="<?php echo htmlspecialchars($setting->getTypography_BodyTextColor4()) ?>" class="color-picker"/></div>
+									<div class="desc">Layer Navigation, My Account, Checkout Progress block title, ....<br/>Default: #fff</div>
+								</div>
+
+								<div class="row">
+									<div class="label">7th Body Text Color</div>
+									<div class="input"><input type="text" name="body_text_color7" value="<?php echo htmlspecialchars($setting->getTypography_BodyTextColor7()) ?>" class="color-picker"/></div>
+									<div class="desc">Specify color for Neccesary For Baby home page tab<br/>Default: #ff9a00</div>
+								</div>
+
+								<div class="row">
+									<div class="label">10th Body Text Color</div>
+									<div class="input"><input type="text" name="body_text_color10" value="<?php echo htmlspecialchars($setting->getTypography_BodyTextColor10()) ?>" class="color-picker"/></div>
+									<div class="desc">Specify color for Baby Toys home page tab<br/>Default: #1876ea</div>
+								</div>
+
+                                <div class="row">
+                                    <div class="label">Body Background Repeat</div>
+                                    <div class="input"><input type="text" name="body_bgrepeat" value="<?php echo htmlspecialchars($setting->getTypography_BodyBgrepeat()) ?>" class="input-text"/></div>
+                                    <div class="desc">Property Values: repeat, repeat-x, repeat-y, no-repeat, inherit<br/>Default: repeat</div>
+                                </div>
+
+                            </div>
+                            <div class="col col-1">
+
+								<div class="row">
+									<div class="label">2nd Background</div>
+									<div class="input"><input type="text" name="body_bgcolor2" value="<?php echo htmlspecialchars($setting->getTypography_BodyBgcolor2()) ?>" class="color-picker" /></div>
+									<div class="desc">Background used in some page titles, some block titles, data table header...<br/>Default: #2f3742</div>
+								</div>		
+
+								<div class="row">
+									<div class="label">3th Body Line Color</div>
+									<div class="input"><input type="text" name="body_line3" value="<?php echo htmlspecialchars($setting->getTypography_BodyLine3()) ?>" class="color-picker"/></div>
+									<div class="desc">Used in Best Seller Home line color<br/>Default: #ff2e2e</div>
+								</div>
+
+								<div class="row">
+									<div class="label">2nd Body Text Color</div>
+									<div class="input"><input type="text" name="body_text_color2" value="<?php echo htmlspecialchars($setting->getTypography_BodyTextColor2()) ?>" class="color-picker"/></div>
+									<div class="desc">Used in price, product name hover...<br/>Default: #cc0000</div>
+								</div>
+
+								<div class="row">
+									<div class="label">5th Body Text Color</div>
+									<div class="input"><input type="text" name="body_text_color5" value="<?php echo htmlspecialchars($setting->getTypography_BodyTextColor5()) ?>" class="color-picker"/></div>
+									<div class="desc">Used in body content text color<br/>Default: #646464</div>
+								</div>
+
+								<div class="row">
+									<div class="label">8th Body Text Color</div>
+									<div class="input"><input type="text" name="body_text_color8" value="<?php echo htmlspecialchars($setting->getTypography_BodyTextColor8()) ?>" class="color-picker"/></div>
+									<div class="desc">Specify color for Baby Going Out home page tab<br/>Default: #9bc411</div>
+								</div>
+
+								<div class="row">
+									<div class="label">11th Body Text Color</div>
+									<div class="input"><input type="text" name="body_text_color11" value="<?php echo htmlspecialchars($setting->getTypography_BodyTextColor11()) ?>" class="color-picker"/></div>
+									<div class="desc">Specify color for Family Handbook home page tab<br/>Default: #c153df</div>
+								</div>
+
+                                <div class="row">
+                                    <div class="label">Body Background Position</div>
+                                    <div class="input"><input type="text" name="body_bgposition" value="<?php echo htmlspecialchars($setting->getTypography_BodyBgposition()) ?>" class="input-text"/></div>
+                                    <div class="desc">Property Values: left top, left center, left bottom,right top, right center, right bottom,center top,center center,center bottom,x% y%, xpos ypos, inherit<br/>Default: 0 0</div>
+                                </div>
+
+							</div>
+                            <div class="col col-1">
+
+                                <div class="row">
+									<div class="label">1st Body Line Color</div>
+									<div class="input"><input type="text" name="body_line1" value="<?php echo htmlspecialchars($setting->getTypography_BodyLine1()) ?>" class="color-picker" /></div>
+									<div class="desc">Used in page title, block, heading bottom line color<br/>Default: #000</div>
+								</div>
+
+								<div class="row">
+									<div class="label">4th Body Line Color</div>
+									<div class="input"><input type="text" name="body_line4" value="<?php echo htmlspecialchars($setting->getTypography_BodyLine4()) ?>" class="color-picker"/></div>
+									<div class="desc">Used in checkout step title, recent view block and most viewed slider in home page, ...<br/>Default: #315c99</div>
+								</div>
+
+                                <div class="row">
+									<div class="label">3th Body Text Color</div>
+									<div class="input"><input type="text" name="body_text_color3" value="<?php echo htmlspecialchars($setting->getTypography_BodyTextColor3()) ?>" class="color-picker"/></div>
+									<div class="desc">Used in page title, block title and heading, ...<br/>Default: #191919</div>
+								</div>
+
+								<div class="row">
+									<div class="label">6th Body Text Color</div>
+									<div class="input"><input type="text" name="body_text_color6" value="<?php echo htmlspecialchars($setting->getTypography_BodyTextColor6()) ?>" class="color-picker"/></div>
+									<div class="desc">Used in block content text color<br/>Default: #969696</div>
+								</div>
+
+								<div class="row">
+									<div class="label">9th Body Text Color</div>
+									<div class="input"><input type="text" name="body_text_color9" value="<?php echo htmlspecialchars($setting->getTypography_BodyTextColor9()) ?>" class="color-picker"/></div>
+									<div class="desc">Specify color for Baby's Food home page tab<br/>Default: #30c2c2</div>
+								</div>
+
+								<div class="row">
+									<div class="label">12th Body Text Color</div>
+									<div class="input"><input type="text" name="body_text_color12" value="<?php echo htmlspecialchars($setting->getTypography_BodyTextColor12()) ?>" class="color-picker"/></div>
+									<div class="desc">Specify color for New in the Baby Store home page slider<br/>Default: #ec3b4d</div>
+								</div>
+
+							</div>
+                                
+                            <div class="col">
+                            	<div class="row">
+									<div class="label">Body Background Pattern</div>
+									<div class="input">
+										<input type="hidden" name="body_bgimage" value="<?php echo htmlspecialchars($setting->getTypography_BodyBgimage()) ?>"  />
+										<?php $imgDir = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN).'frontend/default/em0095/images/stripes/'; ?>
+										<?php foreach (Mage::getModel('em0095settings/config_stripes')->toOptionArray() as $row):?>
+										<a href="#" class="body_bgimage" data-input-value="<?php echo htmlspecialchars($row['value']) ?>" <?php echo $setting->getTypography_BodyBgimage() == $row['value'] ? 'selected="selected"' : '' ?>>
+											<img src="<?php echo $imgDir . 'blank.gif' ?>" style="background-image:url(<?php echo $imgDir . $row['value'] ?>)" alt="" />
+										</a>
+										<?php endforeach ?>
+									</div>
+									<div class="desc">Specify background pattern image.</div>
+								</div>	
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Footer -->
+			<div class="demo demo-01">
+				<div class="content-title"><span>Footer</span></div>
+				<div class="wrapper-content general-setting">
+					<div class="box last">
+						<div class="content">
+                            <div class="col col-1">
+
+                                <div class="row">
+									<div class="label">Footer Background Color</div>
+									<div class="input"><input type="text" name="footer_bgcolor" value="<?php echo htmlspecialchars($setting->getTypography_FooterBgcolor()) ?>" class="color-picker" /></div>
+									<div class="desc">Default background color used in footer<br/>Default: #fff</div>
+								</div>
+
+                                <div class="row">
+                                    <div class="label">2nd Footer Line Color</div>
+                                    <div class="input"><input type="text" name="footer_line2" value="<?php echo htmlspecialchars($setting->getTypography_FooterLine2()) ?>" class="color-picker" /></div>
+                                    <div class="desc">Line and border's color in footer category links<br/>Default: #b0b4cc</div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="label">3th Footer Text Color</div>
+                                    <div class="input"><input type="text" name="footer_text_color3" value="<?php echo htmlspecialchars($setting->getTypography_FooterTextColor3()) ?>" class="color-picker" /></div>
+                                    <div class="desc">Default text color used in footer<br/>Default: #969696</div>
+                                </div>
+
+                            </div>
+                            <div class="col col-1">
+
+                                <div class="row">
+									<div class="label">Footer Bottom Background Color</div>
+									<div class="input"><input type="text" name="footer_bgcolor2" value="<?php echo htmlspecialchars($setting->getTypography_FooterBgcolor2()) ?>" class="color-picker" /></div>
+									<div class="desc">Default background color used in footer bottom<br/>Default: #fff</div>
+								</div>
+
+                                <div class="row">
+                                    <div class="label">1st Footer Text Color</div>
+                                    <div class="input"><input type="text" name="footer_text_color1" value="<?php echo htmlspecialchars($setting->getTypography_FooterTextColor1()) ?>" class="color-picker" /></div>
+                                    <div class="desc">The text color used in title of box content<br/>Default: #9797b1</div>
+                                </div>
+
+								<div class="row">
+									<div class="label">Footer Background Repeat</div>
+									<div class="input"><input type="text" name="footer_bgrepeat" value="<?php echo htmlspecialchars($setting->getTypography_FooterBgrepeat()) ?>" class="input-text" /></div>
+									<div class="desc">Property Values: repeat, repeat-x, repeat-y, no-repeat, inherit<br/>Default: repeat</div>
+								</div>
+
+							</div>
+                            <div class="col col-1">
+
+								<div class="row">
+									<div class="label">1st Footer Line Color</div>
+									<div class="input"><input type="text" name="footer_line1" value="<?php echo htmlspecialchars($setting->getTypography_FooterLine1()) ?>" class="color-picker" /></div>
+									<div class="desc">Line and dashed border's color<br/>Default: #f68694</div>
+								</div>
+
+                                <div class="row">
+                                    <div class="label">2nd Footer Text Color</div>
+                                    <div class="input"><input type="text" name="footer_text_color2" value="<?php echo htmlspecialchars($setting->getTypography_FooterTextColor2()) ?>" class="color-picker" /></div>
+                                    <div class="desc">The text color used in emphasis text<br/>Default: #f36f7c</div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="label">Footer Background Position</div>
+                                    <div class="input"><input type="text" name="footer_bgposition" value="<?php echo htmlspecialchars($setting->getTypography_FooterBgposition()) ?>" class="input-text" /></div>
+                                    <div class="desc">Property Values: left top, left center, left bottom,right top, right center, right bottom,center top,center center,center bottom,x% y%, xpos ypos, inherit<br/>Default: 0 0</div>
+                                </div>
+
+                            </div>
+                            
+                            <div class="col">
+                                <div class="row">
+									<div class="label">Footer Background Pattern</div>
+									<div class="input">
+										<input type="hidden" name="footer_bgimage" value="<?php echo htmlspecialchars($setting->getTypography_FooterBgimage()) ?>"  />
+										<?php $imgDir = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN).'frontend/default/em0095/images/stripes/'; ?>
+										<?php foreach (Mage::getModel('em0095settings/config_stripes')->toOptionArray() as $row):?>
+										<a href="#" class="footer_bgimage" data-input-value="<?php echo htmlspecialchars($row['value']) ?>" <?php echo $setting->getTypography_FooterBgimage() == $row['value'] ? 'style="selected=\'selected\'"' : ''  ?>>
+											<img src="<?php echo $imgDir . 'blank.gif' ?>" style="background-image:url(<?php echo $imgDir . $row['value'] ?>)" alt="" />
+										</a>
+										<?php endforeach ?>
+									</div>
+									<div class="desc">Specify background pattern image.</div>
+								</div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Button -->
+            <div class="demo demo-01">
+            	<div class="content-title"><span>Button</span></div>
+				<div class="wrapper-content general-setting">
+					<div class="box last">
+						<div class="content">
+                            <div class="col col-1">
+                            	<div class="row">
+									<div class="label">1st Button Background Color 1</div>
+									<div class="input"><input type="text" name="button1_bgcolor1" value="<?php echo htmlspecialchars($setting->getTypography_Button1Bgcolor1()) ?>" class="color-picker" /></div>
+									<div class="desc">Background color 1st used in Button<br/>Default: #fc0a0a</div>
+								</div>
+                            	<div class="row">
+									<div class="label">1st Button Line Color</div>
+									<div class="input"><input type="text" name="button1_line" value="<?php echo htmlspecialchars($setting->getTypography_Button1Line()) ?>" class="color-picker" /></div>
+									<div class="desc">Line color 1st used in Button<br/>Default: #ec0000</div>
+								</div>
+                            	<div class="row">
+									<div class="label">2nd Button Text Color</div>
+									<div class="input"><input type="text" name="button2_color" value="<?php echo htmlspecialchars($setting->getTypography_Button2Color()) ?>" class="color-picker" /></div>
+									<div class="desc">Text color 2nd used in Button<br/>Default: #fff</div>
+								</div>
+
+                            	<div class="row">
+									<div class="label">3th Button Background Color 2</div>
+									<div class="input"><input type="text" name="button3_bgcolor2" value="<?php echo htmlspecialchars($setting->getTypography_Button3Bgcolor2()) ?>" class="color-picker" /></div>
+									<div class="desc">Background color 3th used in Button<br/>Default: #ff1563</div>
+								</div>
+                            </div>
+
+                            <div class="col col-1">
+                            	<div class="row">
+									<div class="label">1st Button Background Color 2</div>
+									<div class="input"><input type="text" name="button1_bgcolor2" value="<?php echo htmlspecialchars($setting->getTypography_Button1Bgcolor2()) ?>" class="color-picker" /></div>
+									<div class="desc">Background color 1st used in Button<br/>Default: #cf0301</div>
+								</div>
+                            	<div class="row">
+									<div class="label">2nd Button Background Color 1</div>
+									<div class="input"><input type="text" name="button2_bgcolor1" value="<?php echo htmlspecialchars($setting->getTypography_Button2Bgcolor1()) ?>" class="color-picker" /></div>
+									<div class="desc">Background color 2nd used in Button<br/>Default: #519bfd</div>
+								</div>
+                            	<div class="row">
+									<div class="label">2nd Button Line Color</div>
+									<div class="input"><input type="text" name="button2_line" value="<?php echo htmlspecialchars($setting->getTypography_Button2Line()) ?>" class="color-picker" /></div>
+									<div class="desc">Line color 2nd used in Button<br/>Default: #2f5bb7</div>
+								</div>
+                            	<div class="row">
+									<div class="label">3th Button Text Color</div>
+									<div class="input"><input type="text" name="button3_color" value="<?php echo htmlspecialchars($setting->getTypography_Button3Color()) ?>" class="color-picker" /></div>
+									<div class="desc">Text color 3th used in Button<br/>Default: #fff</div>
+								</div>
+                            </div>
+
+                            <div class="col col-1">
+                            	<div class="row">
+									<div class="label">1st Button Text Color</div>
+									<div class="input"><input type="text" name="button1_color" value="<?php echo htmlspecialchars($setting->getTypography_Button1Color()) ?>" class="color-picker" /></div>
+									<div class="desc">Text color 1st used in Button<br/>Default: #fff</div>
+								</div>
+                            	<div class="row">
+									<div class="label">2nd Button Background Color 2</div>
+									<div class="input"><input type="text" name="button2_bgcolor2" value="<?php echo htmlspecialchars($setting->getTypography_Button2Bgcolor2()) ?>" class="color-picker" /></div>
+									<div class="desc">Background color 2nd used in Button<br/>Default: #357ae9</div>
+								</div>
+                            	<div class="row">
+									<div class="label">3th Button Background Color 1</div>
+									<div class="input"><input type="text" name="button3_bgcolor1" value="<?php echo htmlspecialchars($setting->getTypography_Button3Bgcolor1()) ?>" class="color-picker" /></div>
+									<div class="desc">Background color 3th used in Button<br/>Default: #fb508a</div>
+								</div>
+
+                            	<div class="row">
+									<div class="label">3th Button Line Color</div>
+									<div class="input"><input type="text" name="button3_line" value="<?php echo htmlspecialchars($setting->getTypography_Button3Line()) ?>" class="color-picker" /></div>
+									<div class="desc">Line color 3th used in Button<br/>Default: #df0049</div>
+								</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+			<a href="#" class="btn-reset">Reset</a>
+			<a href="#" class="btn-apply">Apply Changes</a>
+		</div>
+		<div class="copyright">Theme designed by <a href="http://emthemes.com/premium-magento-themes.html" title="Premium Magento Themes &amp; Premium Magento Templates" target="_blank">EMThemes.com</a></div>
+		</form>
+	</div>
+</div>

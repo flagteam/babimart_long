@@ -1,0 +1,91 @@
+<?php
+$id = $this->getData('wrapperId');
+$class = $this->getData('wrapperClass');
+$content = $this->getChildHtml('', true, true);
+?>
+
+<?php
+    $page = Mage::app()->getFrontController()->getRequest()->getRouteName();
+    $homePage = false;
+
+    if($page =='cms'){
+        $cmsSingletonIdentifier = Mage::getSingleton('cms/page')->getIdentifier();
+        $homeIdentifier = Mage::app()->getStore()->getConfig('web/default/cms_home_page');
+        if($cmsSingletonIdentifier === $homeIdentifier){
+            $homePage = true;
+        }
+    }
+
+?>
+<?php if (!empty($content)): ?>
+    <?php if ($id || $class): ?>
+        <div id="<?php echo $id ?>" class="<?php echo $class ?>">
+             <script type="text/javascript">
+                function headerMenu(){
+                    var $ = jQuery;
+                    var container = $("#mega-menu");
+                    var isMobile = /iPhone|iPod|iPad|Phone|Mobile|Android|hpwos/i.test(navigator.userAgent);
+                    if(!isMobile && !($("body").hasClass("adapt-0")==true)){
+                        $("#menuleftText,#menuleftTextHomepage").unbind("click");
+                        $("#<?php echo $id ?>").unbind('hover');
+                        container.show();
+                        if (!($("body").hasClass("cms-index-index"))){
+                            container.hide();
+                            $(".menu-wrapper").hover(
+                                function(){
+                                    container.fadeIn(200);
+                                    $("#menuleftText").toggleClass('hidden-arrow');
+                                    $("#menuleftText").attr('title', 'hide-option');
+                                },
+                                function(){
+                                    container.fadeOut(100);
+                                    $("#menuleftText").removeClass('hidden-arrow');
+                                    $("#menuleftText").attr('title', 'show-option');
+                                }
+                            );
+                        }
+                    }else{
+                        $("#mega-menu").css("display","none");
+                        $("#<?php echo $id ?>").unbind('hover');
+                        $("#menuleftText,#menuleftTextHomepage").unbind("click");
+                        $("#menuleftText,#menuleftTextHomepage").removeClass('hidden-arrow');
+                        $("#menuleftText,#menuleftTextHomepage").attr('title', 'show-option');
+                        $("#menuleftText,#menuleftTextHomepage").click(function( event ){
+                            event.preventDefault();
+                            if (container.is( ":visible" )){
+                                container.hide();
+                                $("#menuleftText,#menuleftTextHomepage").removeClass('hidden-arrow');
+                                $("#menuleftText,#menuleftTextHomepage").attr('title', 'show-option');
+                                
+                            } else {
+                                container.show();
+                                $("#menuleftText,#menuleftTextHomepage").toggleClass('hidden-arrow');
+                                $("#menuleftText,#menuleftTextHomepage").attr('title', 'hide-option');
+                            }
+                        });
+                    }
+                };   
+				jQuery(document).ready(function(){
+					headerMenu();
+				});
+				jQuery(window).bind('emadaptchange orientationchange', function() {
+					headerMenu();
+				});    
+            </script>
+            <div class="menu-wrapper">
+                <div class="menuleftText"<?php if (!$homePage) echo ' id="menuleftText"'; else echo ' id="menuleftTextHomepage"';?>>
+                    <span><?php echo $this->__('Categories') ?></span>
+                </div>
+                <?php
+                    $url = Mage::helper("core/url")->getCurrentUrl();
+                    $url_check = "themeframework_admin/area/preview";
+                ?>
+                <div id="mega-menu" class="mega-menu" <?php if ($homePage || stripos($url, $url_check) == true): echo 'style="display: block;"'; else: echo 'style="display: none;"'; endif; ?>>
+                    <?php echo $content ?>
+                </div>
+            </div>
+        </div>
+    <?php else: ?>
+        <?php echo $content ?>
+    <?php endif ?>
+<?php endif ?>

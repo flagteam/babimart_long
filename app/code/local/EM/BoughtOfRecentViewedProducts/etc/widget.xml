@@ -1,0 +1,315 @@
+<?xml version="1.0"?>
+<widgets>
+    <boughtofrecentviewedproducts type="boughtofrecentviewedproducts/wrap" module="boughtofrecentviewedproducts">
+        <name>EM Bought of Recent Viewed Products</name>
+        <description type="desc">List of Products Recently Viewed by Visitor and Buyer in Multi Categories</description>
+        <parameters>
+            <new_category translate="label">            
+                <label>Choose Categories</label>
+                <visible>1</visible>
+                <description>You can choose many categories.</description>
+                <type>multiselect</type>
+                <source_model>boughtofrecentviewedproducts/categorytree</source_model>        
+				<sort_order>10</sort_order>
+            </new_category>
+            
+            <limit_count>
+                <label>Limit Count</label>
+                <description>The numbers of product will be show</description>
+                <visible>1</visible>
+                <required>1</required>
+                <type>text</type>
+                <value>10</value>
+				<sort_order>20</sort_order>
+            </limit_count>
+
+			<column_count>
+                <label>Column Count</label>
+                <description>The numbers of products per row. if not specified or 0, ul will hold all li.item</description>
+                <visible></visible>
+                <required>0</required>
+                <type>text</type>
+				<sort_order>30</sort_order>
+            </column_count>
+			
+            <custom_class>
+                <label>Custom Wrapper Class</label>	
+    			<visible>1</visible>
+                <required>0</required>
+    			<type>text</type>
+				<sort_order>40</sort_order>
+            </custom_class>
+            
+			<frontend_title>
+				<label>Frontend Title</label>	
+				<visible>1</visible>
+                <required>0</required>
+				<type>text</type>
+				<sort_order>50</sort_order>
+			</frontend_title>
+            
+            <frontend_description>
+				<label>Frontend Description</label>	
+				<visible>1</visible>
+                <required>0</required>
+				<type>text</type>
+				<sort_order>60</sort_order>
+			</frontend_description>            
+			
+			<item_width>
+                <label>Item Width</label>	
+				<description>unit: px</description>
+				<visible>1</visible>
+                <required>0</required>
+				<type>text</type>
+				<value></value>
+				<sort_order>70</sort_order>
+            </item_width>
+            
+            <item_height>
+                <label>Item Height</label>
+				<description>unit: px</description>
+				<visible>1</visible>
+                <required>0</required>
+				<type>text</type>
+				<value></value>
+				<sort_order>80</sort_order>
+            </item_height>
+
+			<item_spacing>
+                <label>Item Spacing</label>
+				<description>Spacing between 2 items. unit: px</description>
+				<visible>1</visible>
+                <required>0</required>
+				<type>text</type>
+				<value></value>
+				<sort_order>90</sort_order>
+            </item_spacing>
+			
+
+            <thumbnail_width>
+                <label>Thumbnail Width</label>	
+				<visible>1</visible>
+                <required>1</required>
+				<type>text</type>
+				<value>150</value>
+				<sort_order>100</sort_order>
+            </thumbnail_width>
+            
+            <thumbnail_height>
+                <label>Thumbnail Height</label>	
+				<visible>1</visible>
+                <required>1</required>
+				<type>text</type>
+				<value>150</value>
+				<sort_order>110</sort_order>
+            </thumbnail_height>
+            
+            <show_product_name>
+                <label>Show Product's Name</label>	
+				<visible>1</visible>
+                <required>0</required>
+				<type>select</type>
+				<values>
+                    <yes translate="label">
+                        <value>true</value>
+                        <label>Yes</label>
+                    </yes>
+                    <no translate="label">
+                        <value>false</value>
+                        <label>No</label>
+                    </no>
+                </values>
+				<sort_order>120</sort_order>
+            </show_product_name>
+            
+            <show_thumbnail>
+                <label>Show Thumbnail</label>	
+				<visible>1</visible>
+                <required>0</required>
+				<type>select</type>
+				<values>
+                    <yes translate="label">
+                        <value>true</value>
+                        <label>Yes</label>
+                    </yes>
+                    <no translate="label">
+                        <value>false</value>
+                        <label>No</label>
+                    </no>
+                </values>
+				<sort_order>130</sort_order>
+            </show_thumbnail>
+            
+            <alt_img>
+                <label>Alternative image</label>    
+                <description>Image should be displayed when hover to the thumbnail image.</description>
+                <visible>1</visible>
+                <required>0</required>
+                <type>select</type>
+                <source_model>boughtofrecentviewedproducts/config_altimg</source_model>
+                <show_in_default>1</show_in_default>
+                <show_in_website>1</show_in_website>
+                <show_in_store>1</show_in_store>
+				<sort_order>140</sort_order>
+            </alt_img>
+
+            <show_description>
+                <label>Show Product's Description</label>	
+				<visible>1</visible>
+                <required>0</required>
+				<type>select</type>
+				<values>
+                    <yes translate="label">
+                        <value>true</value>
+                        <label>Yes</label>
+                    </yes>
+                    <no translate="label">
+                        <value>false</value>
+                        <label>No</label>
+                    </no>
+                </values>
+				<sort_order>150</sort_order>
+            </show_description>
+            
+            <show_price>
+                <label>Show Product's Price</label>	
+				<visible>1</visible>
+                <required>0</required>
+				<type>select</type>
+				<values>
+                    <yes translate="label">
+                        <value>true</value>
+                        <label>Yes</label>
+                    </yes>
+                    <no translate="label">
+                        <value>false</value>
+                        <label>No</label>
+                    </no>
+                </values>
+				<sort_order>160</sort_order>
+            </show_price>
+            
+            <show_reviews>
+                <label>Show Product's Reviews</label>	
+				<visible>1</visible>
+                <required>0</required>
+				<type>select</type>
+				<values>
+                    <yes translate="label">
+                        <value>true</value>
+                        <label>Yes</label>
+                    </yes>
+                    <no translate="label">
+                        <value>false</value>
+                        <label>No</label>
+                    </no>
+                </values>
+				<sort_order>170</sort_order>
+            </show_reviews>
+            
+            <show_addtocart>
+                <label>Show Add to cart button</label>	
+				<visible>1</visible>
+                <required>0</required>
+				<type>select</type>
+				<values>
+                    <yes translate="label">
+                        <value>true</value>
+                        <label>Yes</label>
+                    </yes>
+                    <no translate="label">
+                        <value>false</value>
+                        <label>No</label>
+                    </no>
+                </values>
+				<sort_order>180</sort_order>
+            </show_addtocart>
+            
+            <show_addto>
+                <label>Show Add to wishlist-compare button</label>	
+				<visible>1</visible>
+                <required>0</required>
+				<type>select</type>
+				<values>
+                    <yes translate="label">
+                        <value>true</value>
+                        <label>Yes</label>
+                    </yes>
+                    <no translate="label">
+                        <value>false</value>
+                        <label>No</label>
+                    </no>
+                </values>
+				<sort_order>190</sort_order>
+            </show_addto>            
+            
+			<show_label>
+                <label>Show EM Label</label>	
+				<visible>1</visible>
+                <required>0</required>
+				<type>select</type>
+				<description>Effect only when you installed and enabled EM_Productlabels extension.</description>
+				<values>
+                    <yes translate="label">
+                        <value>true</value>
+                        <label>Yes</label>
+                    </yes>
+                    <no translate="label">
+                        <value>false</value>
+                        <label>No</label>
+                    </no>
+                </values>
+				<sort_order>200</sort_order>
+            </show_label>
+            
+            <choose_template translate="label">
+                <label>Frontend Template</label>
+                <visible>1</visible>
+                <required>1</required>
+                <type>select</type>
+                <values>
+                    <list translate="label">
+                        <value>em_boughtofrecentviewedproducts/list.phtml</value>
+                        <label>List products</label>
+                    </list>
+					<grid translate="label">
+                        <value>em_boughtofrecentviewedproducts/grid.phtml</value>
+                        <label>Grid products</label>
+                    </grid>
+					<cust translate="label">
+                        <value>custom_template</value>
+                        <label>Display as custom template ...</label>
+                    </cust>
+                </values>		
+				<sort_order>210</sort_order>	
+            </choose_template>
+	        <custom_theme>
+				<label>Custom template :</label>
+				<description>Effect only when selecting "Display as custom template. By default, using 'em_boughtofrecentviewedproducts/custom.phtml'"</description>
+				<visible>1</visible>				
+				<type>text</type>
+				<value></value>
+				<sort_order>220</sort_order>
+			</custom_theme>
+			
+			<callback_js>
+				<label>Callback js :</label>
+				<description>js callback after load ajax success</description>
+				<visible>1</visible>				
+				<type>text</type>
+				<value></value>
+				<sort_order>230</sort_order>
+			</callback_js>
+			
+			<cache_lifetime>				
+				<label>Cache Lifetime (Seconds)</label>
+				<description>7200 seconds by default, if not set. To refresh instantly, Clear the Blocks HTML Output Cache.</description>
+				<visible>1</visible>				
+				<type>text</type>
+				<value></value>
+				<sort_order>240</sort_order>
+			</cache_lifetime>
+        </parameters>
+    </boughtofrecentviewedproducts>    
+</widgets>

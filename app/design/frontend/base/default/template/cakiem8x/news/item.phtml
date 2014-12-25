@@ -1,0 +1,41 @@
+<?php
+/**
+ * News template for separate list
+ * @author Van NH <hoangvan87@gmail.com>
+ * @var $this Cakiem8x_News_Block_Item
+ */
+?>
+<?php $_newsItem = $this->helper("cakiem8x_news")->getNewsItemInstance(); ?>
+<div id="news_item_message">
+    <?php echo $this->getMessagesBlock()->getGroupedHtml(); ?>
+</div> 
+<div>
+    <h1><?php echo Mage::helper(("cakiem8x_news"))->__('Site News'); ?></h1>
+</div>
+
+<div>
+    <div>
+        <h1>
+            <?php echo $this->escapeHtml($_newsItem->getTitle()); ?>
+        </h1>
+        <div>
+            <?php echo $this->formatDate($_newsItem->getPublishedAt(), Mage_Core_Model_Locale::FORMAT_TYPE_MEDIUM); ?> |
+            <?php echo $_newsItem->getAuthor(); ?>
+        </div>
+        <div>
+            <?php if ($imageUrl = $this->getImageUrl($_newsItem, 400)): ?>
+                <p><img src="<?php echo $imageUrl ?>" alt="<?php echo $_newsItem->getTitle() ?>" /></p>
+            <?php endif; ?>
+            <div><?php echo $_newsItem->getContent(); ?></div>
+        </div>  
+        <div>
+            <a href="<?php echo $this->getBackUrl() ?>">
+                <?php Mage::helper("cakiem8x_news")->__("Return to list") ?>
+            </a>
+        </div>
+
+    </div>
+
+</div>
+
+<?php echo $this->getPager(); ?>

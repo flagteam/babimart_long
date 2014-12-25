@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <EM_BoughtOfRecentViewedProducts>
+            <active>true</active>
+            <codePool>local</codePool>
+        </EM_BoughtOfRecentViewedProducts>
+    </modules>
+</config> 

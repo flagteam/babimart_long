@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <Cakiem8x_NewProduct>
+            <version>0.0.1</version>
+            <active>true</active>
+            <codePool>local</codePool>      
+        </Cakiem8x_NewProduct>
+    </modules>
+    <global>
+        <blocks>
+            <cakiem8xnewproduct>
+                <class>Cakiem8x_NewProduct_Block_ProductViewCase</class>
+            </cakiem8xnewproduct>
+            <catalog>
+                <rewrite>
+                    <product_view>Cakiem8x_NewProduct_Block_ProductViewCase</product_view>
+                </rewrite>
+            </catalog>
+        </blocks>    
+    </global>
+    
+</config>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+    <modules>
+        <Cakiem8x_Complexworld>
+            <version>0.1.0</version>
+            <active>false</active>
+            <codePool>local</codePool>
+        </Cakiem8x_Complexworld>
+    </modules>
+</config>

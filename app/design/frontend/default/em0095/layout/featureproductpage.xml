@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<layout version="0.1.0">
+
+    <flag_featureproductpage_index_index>
+        <update handle="catalog_category_layered"/>
+        <reference name="breadcrumbs">
+            <action method="addCrumb"><crumbName>Sản phẩm nổi bật</crumbName><crumbInfo><label>Sản phẩm nổi bật</label><title>Sản phẩm nổi bật</title></crumbInfo></action>
+        </reference>
+        <reference name="left">
+            <!--<remove name="catalog.leftnav"/>-->
+            <!--<block type="flag_brands/catalog_layer_view" name="catalog.leftnav" template="catalog/layer/view.phtml" after="currency" />-->
+            <remove name="catalog.compare.sidebar"/>
+        </reference>
+
+    </flag_featureproductpage_index_index>
+
+</layout>

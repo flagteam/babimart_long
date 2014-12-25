@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <Cakiem8x_Mto>
+            <version>0.1.0</version>               
+        </Cakiem8x_Mto>
+    </modules>
+    
+    
+    <global>
+        <blocks>
+            <mto>
+                <class>Cakiem8x_Mto_Block</class>
+            </mto>            
+        </blocks>
+    </global>
+    
+    <frontend>
+        <events>
+            <sales_quote_save_before>
+                <observers>
+                    <my_cart_checker>
+                        <type>singleton</type>
+                        <class>Cakiem8x_Mto_Helper_Event</class>
+                        <method>cartBeforeSave</method>
+                    </my_cart_checker>
+                </observers>
+            </sales_quote_save_before>
+            
+            <sales_convert_quote_item_to_order_item>
+                <observers>
+                    <my_order_attribs>
+                        <type>singleton</type>
+                        <class>Cakiem8x_Mto_Helper_Event</class>
+                        <method>attachSpecialOrderAttribs</method>
+                    </my_order_attribs>
+                </observers>
+            </sales_convert_quote_item_to_order_item>
+        </events>
+    </frontend>
+</config>

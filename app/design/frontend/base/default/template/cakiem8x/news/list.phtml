@@ -1,0 +1,36 @@
+<?php
+/**
+ * News template for items list
+ * @author Van NH <hoangvan87@gmail.com>
+ * @var $this Cakiem8x_News_Block_list
+ */
+?>
+
+<div id="news_list_message">
+    <?php echo $this->getMessagesBlock()->getGroupedHtml(); ?>
+</div> 
+<div>
+    <h1><?php echo Mage::helper(("cakiem8x_news"))->__('Site News'); ?></h1>
+</div>
+
+<div>
+    <?php foreach ($this->getCollection() as $news): ?>
+        <div id="item_<?php echo $news->getId(); ?>">
+            <h2>
+                <a href="<?php echo $this->getItemUrl($news); ?>">
+                    <?php echo $this->escapeHtml($news->getTitle()); ?>
+                </a>
+            </h2>
+            <div>
+                <?php echo $this->formatDate($news->getPublishedAt(), 'medium'); ?> |
+                <?php echo $news->getAuthor(); ?>
+            </div>
+
+            <?php if ($imageUrl = $this->getImageUrl($news, 100)): ?>
+                <p><img src="<?php echo $imageUrl ?>" alt="<?php echo $news->getTitle() ?>" /></p>
+            <?php endif; ?>
+        </div>
+    <?php endforeach; ?>
+</div>
+
+<?php echo $this->getPager(); ?>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <Cakiem8x_UserConnect>
+            <version>1.0.1</version>               
+        </Cakiem8x_UserConnect>
+    </modules>
+    <global>
+        <models>
+            <userconnect>
+                <class>Cakiem8x_UserConnect_Model</class>
+                <resourceModel>userconnect_entity</resourceModel>
+            </userconnect>
+            
+            <userconnect_entity>
+                <class>Cakiem8x_UserConnect_Model_Entity</class>
+                <!-- a model_entity value in the database of
+                "userconnect/customer"
+                would result in a classname of
+                Company_UserConnect_Model_Entity_Customer
+                -->
+                <entities>
+                    <customer_entity>
+                        <table>user</table>
+                    </customer_entity>
+                </entities>
+            </userconnect_entity>
+            
+            <customer>
+                <rewrite>
+                    <customer>Cakiem8x_UserConnect_Model_Customer</customer>
+                </rewrite>
+            </customer>
+        
+        </models>
+        
+        
+    </global>
+    
+</config>

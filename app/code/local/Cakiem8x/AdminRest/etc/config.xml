@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<config>
+    <modules>
+        <Cakiem8x_AdminRest>
+            <version>0.1.0</version>
+        </Cakiem8x_AdminRest>
+    </modules>
+    
+    <admin>
+        <routers>
+            <adminrest>
+                <use>admin</use>
+                <args>
+                    <module>Cakiem8x_AdminRest</module>
+                    <frontName>adminrest</frontName>
+                </args>
+            </adminrest>
+        </routers>
+    </admin>
+    
+    <global>
+        <helpers>
+            <adminrest>
+                <class>Cakiem8x_AdminRest_Helper</class>
+            </adminrest>
+        </helpers>
+    </global>
+    
+    <adminhtml>
+        <menu>
+            <tutorial_menu translate="title" module="adminrest">
+                <title>Tutorial menu</title>
+                <sort_order>9999</sort_order>
+                <children>
+                    <first_page module="adminrest">
+                        <title>Our first page</title>
+                        <action>adminrest/index/index</action>
+                    </first_page>
+                    <second_page module="adminrest">
+                        <title>Our second page</title>
+                        <action>adminrest/index/acl</action>
+                    </second_page>
+                </children>
+            </tutorial_menu>
+            
+            <system>
+                <children>
+                    <another_menu_from_us>
+                        <title>Here too !</title>
+                        <action>adminrest/index/index</action>
+                    </another_menu_from_us>
+                </children>
+            </system>
+        </menu>
+        
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <tutorial_menu translate="title" module="adminrest">
+                            <title>Tutorial menu</title>
+                            <sort_order>9999</sort_order>
+                            <children>
+                                <first_page module="adminrest">
+                                    <title>Our first page</title>
+                                    <action>adminrest/index/index</action>
+                                </first_page>
+                                <second_page module="adminrest">
+                                    <title>Our second page</title>
+                                    <action>adminrest/index/acl</action>
+                                </second_page>
+                            </children>
+                        </tutorial_menu>
+            
+                        <system>
+                            <children>
+                                <another_menu_from_us>
+                                    <title>Here too !</title>
+                                    <action>adminrest/index/index</action>
+                                </another_menu_from_us>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>            
+        </acl>
+    </adminhtml>
+    
+    
+</config>

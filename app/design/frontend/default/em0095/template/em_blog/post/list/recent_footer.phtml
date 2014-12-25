@@ -1,0 +1,29 @@
+<?php if(Mage::getStoreConfig('blog/menu/show_recent_post')):?>
+<div class="block em_block-recent-post">
+    <div class="block-title">
+        <strong><span><?php echo $this->__('Our Blog'); ?></span></strong>
+    </div>
+    <div class="block-content">
+        <ol>
+            <?php $i=0; foreach ($this->getRecentPost() as $p): ?>
+                <li class="item">
+                    <a class="post-title" href="<?php echo $p->getPostUrl()?>" ><?php echo $p->getTitle();?></a>
+                    <?php $date = new DateTime($p->getCreatedAt());?>
+                    <div class="recent-post-content">
+                        <?php 
+                            $shortdes =  $p->getPostContent();
+                            if(strlen($shortdes)>100) { //dem ki tu chuoi $str, 100 la chieu dai muon quy dinh
+                                $strCutTitle = substr($shortdes, 0, 100); //cat 100 ki tu dau
+                                $shortdes = substr($strCutTitle, 0, strrpos($strCutTitle, ' '));
+                            }
+                            echo $shortdes . ' ...';
+                        ?>
+                   </div>
+                    <small class="time-stamp"><?php echo $date->format('l, M j Y, h:iA'); ?></small>
+                </li>
+                <?php $i++; if($i>1) break; ?>
+            <?php endforeach; ?>
+        </ol>
+    </div>
+</div>
+<?php endif;?>

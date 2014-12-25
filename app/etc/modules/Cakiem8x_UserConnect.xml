@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <Cakiem8x_UserConnect>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Cakiem8x_UserConnect>
+    </modules>
+</config>

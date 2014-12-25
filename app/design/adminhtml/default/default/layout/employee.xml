@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<layout version="0.1.0">
+    <employee_adminhtml_employee_index>
+        <reference name="content">
+            <block type="employee/adminhtml_employee" name="employee"/>
+        </reference>
+    </employee_adminhtml_employee_index>
+</layout>

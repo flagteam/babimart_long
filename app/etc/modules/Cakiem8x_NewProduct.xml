@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Cakiem8x_NewProduct>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Cakiem8x_NewProduct>
+    </modules>
+</config>

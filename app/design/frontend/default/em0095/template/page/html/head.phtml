@@ -1,0 +1,163 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2013 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<meta http-equiv="Content-Type" content="<?php echo $this->getContentType() ?>" />
+<title><?php echo $this->getTitle() ?></title>
+<meta name="description" content="<?php echo htmlspecialchars($this->getDescription()) ?>" />
+<meta name="keywords" content="<?php echo htmlspecialchars($this->getKeywords()) ?>" />
+<meta name="robots" content="<?php echo htmlspecialchars($this->getRobots()) ?>" />
+<link rel="icon" href="<?php echo $this->getFaviconFile(); ?>" type="image/x-icon" />
+<link rel="shortcut icon" href="<?php echo $this->getFaviconFile(); ?>" type="image/x-icon" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!--[if lt IE 7]>
+<script type="text/javascript">
+//<![CDATA[
+    var BLANK_URL = '<?php echo $this->helper('core/js')->getJsUrl('blank.html') ?>';
+    var BLANK_IMG = '<?php echo $this->helper('core/js')->getJsUrl('spacer.gif') ?>';
+//]]>
+</script>
+<![endif]-->
+<script type="text/javascript">
+<?php if (!$this->getData('disable_adapt')): ?>
+var ADAPT_CONFIG = {
+  path: "<?php echo $this->getSkinUrl('css') ?>/",
+  dynamic: true,
+  range: [
+    '0px    to 760px  = mobile.css',
+    '760px  to 980px  = 720.css',
+    '980px  to 1200px = 960.css',
+    '1200px to 1600px = 1200.css',
+    '1600px = 1560.css'
+  ]
+};
+<?php else: ?>
+var ADAPT_CONFIG = false;
+<?php endif ?>
+</script>
+<?php
+    $setting = Mage::helper('em0095settings');
+?>
+<script type="text/javascript">
+
+  var ISLOGIN = <?php echo $setting->getIsLoginCustomer() ?>;
+	var PRODUCTSGRID_ITEM_WIDTH = <?php echo $setting->getProductsGrid_Width(200) ?>;
+  var PRODUCTSGRID_ITEM_SPACING = <?php echo $setting->getProductsGrid_Gutter(20) ?>;
+  var CROSSSELL_ITEM_WIDTH = <?php echo $setting->getCrosssell_Width(210) ?>;
+  var CROSSSELL_ITEM_SPACING = <?php echo $setting->getCrosssell_Gutter(30) ?>;
+  var UPSELL_ITEM_WIDTH = <?php echo $setting->getUpsell_Width(209) ?>;
+  var UPSELL_ITEM_SPACING = <?php echo $setting->getUpsell_Gutter(30) ?>;
+  var AJAXCART_AUTOCLOSE = <?php echo $setting->getAjaxcart_AutoClose(0) ?>;
+  var FREEZED_TOP_MENU = <?php echo $setting->getGeneral_FreezedTopMenu(0) ?>;
+
+</script>
+<?php echo $this->getCssJsHtml() ?>
+<?php echo $this->getChildHtml() ?>
+<?php echo $this->helper('core/js')->getTranslatorScript() ?>
+<?php echo $this->getIncludes() ?>
+<script type="text/javascript">
+  jQuery(function($){
+    
+    var checkMobile = /iPhone|iPod|iPad|Phone|Mobile|Android|webOS|iPod|BlackBerry|hpwos/i.test(navigator.userAgent);
+
+    // Link Language Curency
+    $('#id_laguage_currency_content').hide();
+    
+    if(checkMobile){
+      $('#id_language_currency_link').find('.language a').attr('href','javascript:void(0);');
+      $('#id_language_currency_link').click(function(){
+        $('#id_laguage_currency_content').slideToggle();
+      })
+    }else{
+      $('#id_language_currency_link')
+     .bind('mouseover', showLanguageCurrency)
+     .bind('click', showLanguageCurrency)
+     .bind('mouseout', hideLanguageCurrency);
+    }
+     
+    
+    // My Language Curency
+     $('#id_laguage_currency_content')
+     .bind('mouseover', showLanguageCurrency)
+     .bind('click', showLanguageCurrency)
+     .bind('mouseout', hideLanguageCurrency);
+    
+    // Hide Language Curency
+    var timeoutlancur = null;
+  function hideLanguageCurrency() {
+    if (timeoutlancur)
+    clearTimeout(timeoutlancur);
+    timeoutlancur = setTimeout(function() {
+    timeoutlancur = null;
+    $('#id_laguage_currency_content').slideUp();
+    $('#id_language_currency_link').removeClass('over');
+    }, 200);
+  }
+    
+    // Show Language Curency
+  function showLanguageCurrency() {       
+    if (timeoutlancur)
+    clearTimeout(timeoutlancur);
+    timeoutlancur = setTimeout(function() {
+    timeoutlancur = null;
+    $('#id_laguage_currency_content').slideDown();
+    $('#id_language_currency_link').addClass('over');
+    }, 200);
+  }
+  
+    // Change Language
+  $('#language ul li a')  
+    .bind('click', changeLanguageCode);
+    
+    // Change Currency
+    $('#currency ul.currency-content li a')  
+    .bind('click', changeCurrencyCode);
+    
+    $(window).load(function() {
+        //1. change language on header
+        changeLanguageCode();
+        
+        //2. change language on header
+        changeCurrencyCode();    
+        
+  });
+    
+    // Function Change Language
+    function changeLanguageCode() {     
+    link = $('#language ul li.selected a').attr("href");
+    $('#language_link').attr("href",link);
+    src = urlSkinsite + 'images/language/' + $('#language ul li.selected a').attr("title") + '.png';
+    $('#language_link img').attr("src",src);
+  }
+    
+    // Function Change Currency
+    function changeCurrencyCode() {     
+    linkCurrency = $('#currency ul.currency-content li.selected a').attr("href");
+    $('#currency_link').attr("href",linkCurrency);
+        textCurrency = $('#currency ul.currency-content li.selected a').attr("title");
+        $('#currency_link').text(textCurrency);
+  } 
+  });
+</script>

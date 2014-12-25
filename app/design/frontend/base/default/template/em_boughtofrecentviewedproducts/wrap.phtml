@@ -1,0 +1,18 @@
+<?php
+$idJs = "embfrvp_".md5(uniqid(rand()));
+Mage::helper('core')->isModuleEnabled('EM_Productlabels')
+?>
+<div class="embfrvp_wrapper" id="<?php echo $idJs;?>"></div>
+<script type="text/javascript">
+document.observe('dom:loaded', function(){
+  new Ajax.Updater('<?php echo $idJs;?>', '<?php echo $this->getUrl('embfrvp/index/index',array('_secure'=>true))?>', {
+		method : 'get',
+		asynchronous : true,
+		evalScripts : true,
+		parameters : <?php echo $this->getAjaxData()?>,
+		onComplete : function(){
+			<?php if($callBackJs = $this->getData('callback_js')):?><?php echo $callBackJs?>();<?php endif;?>
+		}
+ });
+});
+</script>
